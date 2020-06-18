@@ -1,3 +1,4 @@
+// Y and X are swapped. I got them confused. In this program X is vertical while Y is horizontal.
 #include <stdio.h>
 
 #define EMPTY 9
@@ -54,7 +55,7 @@ void movePawn(int board[8][8], int x, int y)
 	if(board[x+1][y] == EMPTY)
 	{
 		printf("Go forward:");
-		scanf("\d", checker);
+		scanf("\d\n", checker);
 		if(checker==1)
 		{
 			board[x][y]==EMPTY;
@@ -65,7 +66,7 @@ void movePawn(int board[8][8], int x, int y)
 	else if(board[x+1][y-1]==PAWNB)
 	{
 		printf("Eat Left:");
-		scanf("\d", checker);
+		scanf("\d\n", checker);
 		if(checker==1)
 		{
 			board[x][y]==EMPTY;
@@ -76,7 +77,7 @@ void movePawn(int board[8][8], int x, int y)
 	else if(board[x+1][y+1]==PAWNB)
 	{
 		printf("Eat right:");
-		scanf("\d", checker);
+		scanf("\d\n", checker);
 		if(checker==1)
 		{
 			board[x][y]==EMPTY;
@@ -86,8 +87,23 @@ void movePawn(int board[8][8], int x, int y)
 	}
 	else
 	{
-		printf("\nChoose new coordinate");
+		printf("Choose new coordinate\n");
 	}	
 }	
+void moveRook(int board[8][8], int x, int y)
+{
+	int xChange =0;
+	int yChange = 0;
+	printf("Choose vertical movement:")
+	scanf("\d\n", xChange);
+	printf("Choose horizontal movement:");
+	scanf("\d\n", yChange);
+	if(board[x+xChange][y+yChange]==EMPTY||board[x+xChange][y+yChange]==PAWNB||board[x+xChange][y+yChange]==HORSEB||board[x+xChange][y+yChange]==BISHOPB||board[x+xChange][y+yChange]==ROOKB||board[x+xChange][y+yChange]==QUEENB)
+	{
+		board[x][y]==EMPTY;
+		board[x+xChange][y+yChange]==ROOK;
+	}
+}
+	
 
 
