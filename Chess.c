@@ -49,7 +49,7 @@ void printBoard(int board[8][8])
 		printf("\n");
 	}
 }	
-void movePawn(int board[8][8], int x, int y)
+int movePawn(int board[8][8], int x, int y)
 {
 	int checker = 0; 
 	if(board[x+1][y] == EMPTY)
@@ -60,7 +60,7 @@ void movePawn(int board[8][8], int x, int y)
 		{
 			board[x][y]==EMPTY;
 			board[x+1][y] == PAWN;
-			return;
+			return 1;
 		}
 	}
 	else if(board[x+1][y-1]==PAWNB)
@@ -71,7 +71,7 @@ void movePawn(int board[8][8], int x, int y)
 		{
 			board[x][y]==EMPTY;
 			board[x+1][y-1]==PAWN;
-			return;
+			return 1;
 		}
 	}
 	else if(board[x+1][y+1]==PAWNB)
@@ -82,18 +82,19 @@ void movePawn(int board[8][8], int x, int y)
 		{
 			board[x][y]==EMPTY;
 			board[x+1][y+1] ==PAWN;
-			return;
+			return 1;
 		}
 	}
 	else
 	{
 		printf("Choose new coordinate\n");
+		return 0;
 	}	
 }	
-void moveRook(int board[8][8], int x, int y)
+int moveRook(int board[8][8], int x, int y)
 {
-	int xChange =0;
-	int yChange = 0;
+	int xChange; 
+	int yChange; 
 	printf("Choose vertical movement:")
 	scanf("\d\n", xChange);
 	printf("Choose horizontal movement:");
@@ -102,8 +103,20 @@ void moveRook(int board[8][8], int x, int y)
 	{
 		board[x][y]==EMPTY;
 		board[x+xChange][y+yChange]==ROOK;
+		return 1;
+	}
+	else
+	{
+		printf("Not inside board or friendly unit \n");
+		return 0;
 	}
 }
 	
+int moveBishop(int board[8][8], int x, int y)
+{
+	int leftOrRight;
+	int movement;
+	printf("Move 
+
 
 
