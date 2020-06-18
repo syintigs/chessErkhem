@@ -28,3 +28,25 @@ int main(void)
 	};
 	return 0;
 }	
+void printBoard(int board[8][8])
+{
+	int i;
+	int j;
+	for(i = 0; i<8; i++)
+	{
+		for(j=0;j<8;j++)
+		{
+			if(board[i][j]==EMPTY)
+			{
+				prinf("--");
+			}
+			else
+			{
+				printf(board[i][j]);
+			}
+		}
+		printf("\n);
+	}
+}	
+
+
