@@ -45,8 +45,49 @@ void printBoard(int board[8][8])
 				printf(board[i][j]);
 			}
 		}
-		printf("\n);
+		printf("\n");
 	}
+}	
+void movePawn(int board[8][8], int x, int y)
+{
+	int checker = 0; 
+	if(board[x+1][y] == EMPTY)
+	{
+		printf("Go forward:");
+		scanf("\d", checker);
+		if(checker==1)
+		{
+			board[x][y]==EMPTY;
+			board[x+1][y] == PAWN;
+			return;
+		}
+	}
+	else if(board[x+1][y-1]==PAWNB)
+	{
+		printf("Eat Left:");
+		scanf("\d", checker);
+		if(checker==1)
+		{
+			board[x][y]==EMPTY;
+			board[x+1][y-1]==PAWN;
+			return;
+		}
+	}
+	else if(board[x+1][y+1]==PAWNB)
+	{
+		printf("Eat right:");
+		scanf("\d", checker);
+		if(checker==1)
+		{
+			board[x][y]==EMPTY;
+			board[x+1][y+1] ==PAWN;
+			return;
+		}
+	}
+	else
+	{
+		printf("\nChoose new coordinate");
+	}	
 }	
 
 
