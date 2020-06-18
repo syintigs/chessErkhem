@@ -99,7 +99,12 @@ int moveRook(int board[8][8], int x, int y)
 	scanf("\d\n", xChange);
 	printf("Choose horizontal movement:");
 	scanf("\d\n", yChange);
-	if(board[x+xChange][y+yChange]==EMPTY||board[x+xChange][y+yChange]==PAWNB||board[x+xChange][y+yChange]==HORSEB||board[x+xChange][y+yChange]==BISHOPB||board[x+xChange][y+yChange]==ROOKB||board[x+xChange][y+yChange]==QUEENB)
+	ifxChange==0 && yChange ==0)
+	{
+		printf("Input other than 0, 0)\n");
+		return 0;
+	}
+	else if(board[x+xChange][y+yChange]==EMPTY||board[x+xChange][y+yChange]==PAWNB||board[x+xChange][y+yChange]==HORSEB||board[x+xChange][y+yChange]==BISHOPB||board[x+xChange][y+yChange]==ROOKB||board[x+xChange][y+yChange]==QUEENB)
 	{
 		board[x][y]==EMPTY;
 		board[x+xChange][y+yChange]==ROOK;
@@ -114,9 +119,27 @@ int moveRook(int board[8][8], int x, int y)
 	
 int moveBishop(int board[8][8], int x, int y)
 {
-	int leftOrRight;
 	int movement;
-	printf("Move 
+	printf("Move left or right(Negative for left, positive for right):");
+	scanf("\d\n", movement);
+	if(movement==0)
+	{
+		printf("Input other than 0\n");
+		return 0;
+	}
+	else if(board[x+movement][y+movement]==EMPTY||board[x+movement][y+movement]==PAWNB||board[x+movement][y+movement]==HORSEB||board[x+movement][y+movement]==BISHOPB||board[x+movement][y+movement]==ROOKB||board[x+movement][y+movement]==QUEENB)
+	{
+		board[x][y] == EMPTY;
+		board[x+movement][y+movement]==BISHOP;
+		return 1; 
+	}
+	else
+	{
+		printf("Not inside board or friendly unit\n");
+		return 0;
+	}
+	
+}
 
 
 
