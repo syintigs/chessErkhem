@@ -141,5 +141,11 @@ int moveBishop(int board[8][8], int x, int y)
 	
 }
 
+int moveHorse(int board[8][8], int x, int y)
+{
+	int newPosition;
+	printf(
+
+
 
 
