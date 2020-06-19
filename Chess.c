@@ -174,6 +174,24 @@ int moveHorse(int board[8][8], int x, int y)
 		return 0;
 	}
 }
+int moveQueen(int board[8][8], int x, int y)
+{
+	int rookOrBishop =0;
+	printf("Lateral or diagonal(1 for lateral, 2 for diagonal):");
+	scanf("%d\n",rookOrBishop);
+	if(rookOrBishop==1)
+	{
+		moveRook(board, x, y);
+	}
+	else if(rookOrBishop==2)
+	{
+		moveBishop(board,x,y);
+	}
+	else
+	{
+		printf("Wrong input\n");
+	}
+}
 
 
 
