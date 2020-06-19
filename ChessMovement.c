@@ -1,0 +1,237 @@
+#include <stdio.h>
+int main(void)
+{
+
+	return 0;
+}
+int movePawn(int board[8][8], int x, int y)
+{
+	int checker = 0; 
+	if(board[x+1][y] == EMPTY)
+	{
+		printf("Go forward:");
+		scanf("\d\n", checker);
+		if(checker==1)
+		{
+			board[x][y]==EMPTY;
+			board[x+1][y] == PAWN;
+			return 1;
+		}
+	}
+	else if(board[x+1][y-1]==PAWNB)
+	{
+		printf("Eat Left:");
+		scanf("\d\n", checker);
+		if(checker==1)
+		{
+			board[x][y]==EMPTY;
+			board[x+1][y-1]==PAWN;
+			return 1;
+		}
+	}
+	else if(board[x+1][y+1]==PAWNB)
+	{
+		printf("Eat right:");
+		scanf("\d\n", checker);
+		if(checker==1)
+		{
+			board[x][y]==EMPTY;
+			board[x+1][y+1] ==PAWN;
+			return 1;
+		}
+	}
+	else
+	{
+		printf("Choose new coordinate\n");
+		return 0;
+	}	
+}	
+
+int movePawn(int board[8][8], int x, int y)
+{
+	int checker = 0; 
+	if(board[x+1][y] == EMPTY)
+	{
+		printf("Go forward:");
+		scanf("\d\n", checker);
+		if(checker==1)
+		{
+			board[x][y]==EMPTY;
+			board[x+1][y] == PAWN;
+			return 1;
+		}
+	}
+	else if(board[x+1][y-1]==PAWNB)
+	{
+		printf("Eat Left:");
+		scanf("\d\n", checker);
+		if(checker==1)
+		{
+			board[x][y]==EMPTY;
+			board[x+1][y-1]==PAWN;
+			return 1;
+		}
+	}
+	else if(board[x+1][y+1]==PAWNB)
+	{
+		printf("Eat right:");
+		scanf("\d\n", checker);
+		if(checker==1)
+		{
+			board[x][y]==EMPTY;
+			board[x+1][y+1] ==PAWN;
+			return 1;
+		}
+	}
+	else
+	{
+		printf("Choose new coordinate\n");
+		return 0;
+	}	
+}	
+
+
+int moveRook(int board[8][8], int x, int y)
+{
+	int xChange; 
+	int yChange; 
+	printf("Choose vertical movement:")
+	scanf("\d\n", xChange);
+	printf("Choose horizontal movement:");
+	scanf("\d\n", yChange);
+	ifxChange==0 && yChange ==0)
+	{
+		printf("Input other than 0, 0)\n");
+		return 0;
+	}
+	else if(board[x+xChange][y+yChange]==EMPTY||board[x+xChange][y+yChange]==PAWNB||board[x+xChange][y+yChange]==HORSEB||board[x+xChange][y+yChange]==BISHOPB||board[x+xChange][y+yChange]==ROOKB||board[x+xChange][y+yChange]==QUEENB)
+	{
+		board[x][y]==EMPTY;
+		board[x+xChange][y+yChange]==ROOK;
+		return 1;
+	}
+	else
+	{
+		printf("Not inside board or friendly unit \n");
+		return 0;
+	}
+}
+	
+
+int moveBishop(int board[8][8], int x, int y)
+{
+	int movement;
+	printf("Move left or right(Negative for left, positive for right):");
+	scanf("\d\n", movement);
+	if(movement==0)
+	{
+		printf("Input other than 0\n");
+		return 0;
+	}
+	else if(board[x+movement][y+movement]==EMPTY||board[x+movement][y+movement]==PAWNB||board[x+movement][y+movement]==HORSEB||board[x+movement][y+movement]==BISHOPB||board[x+movement][y+movement]==ROOKB||board[x+movement][y+movement]==QUEENB)
+	{
+		board[x][y] == EMPTY;
+		board[x+movement][y+movement]==BISHOP;
+		return 1; 
+	}
+	else
+	{
+		printf("Not inside board or friendly unit\n");
+		return 0;
+	}
+	
+}
+
+int moveHorse(int board[8][8], int x, int y)
+{
+	int newX;
+	int newY;
+	printf("Choose a new X location:");
+	scanf("%d\n", newX);
+	printf("Choose a new Y location:");
+	scanf("%d\n", newY);
+	if(movement==0)
+	{
+		printf("Input other than 0\n");
+		return 0;
+	}
+	else if(board[newX][newY]==EMPTY||board[newX][newY]==PAWNB||board[newX][newY]==HORSEB||board[newX][newY]==BISHOPB||board[newX][newY]==ROOKB||board[newX][newY]==QUEENB)
+	{
+		if(board[newX][newY]==board[x+1][y+2]||board[newX][newY]==board[x+1][y-2]||board[newX][newY]==board[x-1][y+2]||board[newX][newY]==board[x-1][y-2]||board[newX][newY]==board[x+2][y+1]||board[newX][newY]==board[x+2][y-1]||board[newX][newY]==board[x-2][y+1]||board[newX][newY]==board[x-2][y-1])
+		{
+			board[x][y]=EMPTY;
+			board[newX][newY]=HORSE;
+			return 1;
+		}
+		else
+		{
+			printf("Not a valid horse movement\n");
+			return 0;
+		}
+	}
+	else
+	{
+		printf("Outside board or friendly unit\n");
+		return 0;
+	}
+}
+int moveQueen(int board[8][8], int x, int y)
+{
+	int rookOrBishop =0;
+	printf("Lateral or diagonal(1 for lateral, 2 for diagonal):");
+	scanf("%d\n",rookOrBishop);
+	if(rookOrBishop==1)
+	{
+		moveRook(board, x, y);
+	}
+	else if(rookOrBishop==2)
+	{
+		moveBishop(board,x,y);
+	}
+	else
+	{
+		printf("Wrong input\n");
+	}
+}
+int moveKing(int board[8][8], int x, int y)
+{
+	int newX;
+	int newY;
+	printf("Choose new x:");
+	scanf("%d\n", newX);
+	printf("Choose new y:");
+	scanf("%d\n",newY);
+	if(board[newX][newY]==board[x][y+1]||board[newX][newY]==board[x][y-1]||board[newX][newY]==board[x-1][y+1]||board[newX][newY]==board[x-1][y-1]||board[newX][newY]==board[x-1][y]||board[newX][newY]==board[x+1][y+1]||board[newX][newY]==board[x+1][y-1]||board[newX][newY]==board[x+1][y])
+	{
+		board[x][y]==EMPTY;
+		board	
+	}
+}
+int check(int board[8][8], int x, int y)
+{
+	if(moveQueenB(board,x,y)==1)
+	{
+		return 1;
+	}
+	if(moveRookB(board,x,y)==1)
+	{
+		return 1;
+	}
+	if(moveBishopB(board,x,y)==1)
+	{
+		return 1;
+	}
+	if(moveHorseB(board,x,y)==1)
+	{
+		return 1;
+	}
+	if(movePawnB(board,x,y)==1)
+	{
+		return 1;
+	}
+
+		
+
+
+
+
