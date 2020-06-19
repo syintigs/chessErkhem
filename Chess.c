@@ -143,8 +143,37 @@ int moveBishop(int board[8][8], int x, int y)
 
 int moveHorse(int board[8][8], int x, int y)
 {
-	int newPosition;
-	printf(
+	int newPositionX;
+	int newPositionY;
+	printf("Choose a new X location:");
+	scanf("%d\n", newPositionX);
+	printf("Choose a new Y location:");
+	scanf("%d\n", newPositionY);
+	if(movement==0)
+	{
+		printf("Input other than 0\n");
+		return 0;
+	}
+	else if(board[newPositionX][newPositionY]==EMPTY||board[newPositionX][newPositionY]==PAWNB||board[newPositionX][newPositionY]==HORSEB||board[newPositionX][newPositionY]==BISHOPB||board[newPositionX][newPositionY]==ROOKB||board[newPositionX][newPositionY]==QUEENB)
+	{
+		if(board[newPositionX][newPositionY]==board[x+1][y+2]||board[newPositionX][newPositionY]==board[x+1][y-2]||board[newPositionX][newPositionY]==board[x-1][y+2]||board[newPositionX][newPositionY]==board[x-1][y-2]||board[newPositionX][newPositionY]==board[x+2][y+1]||board[newPositionX][newPositionY]==board[x+2][y-1]||board[newPositionX][newPositionY]==board[x-2][y+1]||board[newPositionX][newPositionY]==board[x-2][y-1])
+		{
+			board[x][y]=EMPTY;
+			board[newPositionX][newPositionY]=HORSE;
+			return 1;
+		}
+		else
+		{
+			printf("Not a valid horse movement\n");
+			return 0;
+		}
+	}
+	else
+	{
+		printf("Outside board or friendly unit\n");
+		return 0;
+	}
+}
 
 
 
