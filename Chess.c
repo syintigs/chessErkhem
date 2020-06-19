@@ -192,6 +192,9 @@ int moveQueen(int board[8][8], int x, int y)
 		printf("Wrong input\n");
 	}
 }
+int moveKing(int board[8][8], int x, int y)
+{
+
 
 
 
