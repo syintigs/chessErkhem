@@ -203,32 +203,41 @@ int moveKing(int board[8][8], int x, int y)
 	scanf("%d\n",newY);
 	if(board[newX][newY]==board[x][y+1]||board[newX][newY]==board[x][y-1]||board[newX][newY]==board[x-1][y+1]||board[newX][newY]==board[x-1][y-1]||board[newX][newY]==board[x-1][y]||board[newX][newY]==board[x+1][y+1]||board[newX][newY]==board[x+1][y-1]||board[newX][newY]==board[x+1][y])
 	{
+		if(check(board,x,y)
+		{
+			prinf("You'll be checked\n");
+			return 0;
+		}
 		board[x][y]==EMPTY;
-		board	
+		board
 	}
 }
 int check(int board[8][8], int x, int y)
-{
+{	
 	if(moveQueenB(board,x,y)==1)
 	{
 		return 1;
 	}
-	if(moveRookB(board,x,y)==1)
+	else if(moveRookB(board,x,y)==1)
 	{
 		return 1;
 	}
-	if(moveBishopB(board,x,y)==1)
+	else if(moveBishopB(board,x,y)==1)
 	{
 		return 1;
 	}
-	if(moveHorseB(board,x,y)==1)
+	else if(moveHorseB(board,x,y)==1)
 	{
 		return 1;
 	}
-	if(movePawnB(board,x,y)==1)
+	else if(movePawnB(board,x,y)==1)
 	{
 		return 1;
 	}
+}
+int checkMate(int board[8][8], int x, int y)
+{
+
 
 		
 
