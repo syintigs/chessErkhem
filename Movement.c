@@ -1,9 +1,5 @@
 #include <stdio.h>
-int main(void)
-{
-
-	return 0;
-}
+#include <stdbool.h>
 int movePawn(int board[8][8], int x, int y)
 {
 	int checker = 0; 
@@ -235,8 +231,14 @@ int check(int board[8][8], int x, int y)
 		return 1;
 	}
 }
+int movementAccessibility(int board[8][8], int x, y)
+{
+	return (check(board, x, y)&&(EMPTY|| 
+}
 int checkMate(int board[8][8], int x, int y)
 {
+	
+}
 
 
 		
