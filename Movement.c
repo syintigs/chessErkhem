@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
+#define ENEMYOREMPTY (EMPTY||PAWNB||ROOKB||BISHOPB||HORSEB||QUEENB)
+
 int movePawn(int board[8][8], int x, int y)
 {
 	int checker = 0; 
@@ -100,7 +102,7 @@ int moveRook(int board[8][8], int x, int y)
 		printf("Input other than 0, 0)\n");
 		return 0;
 	}
-	else if(board[x+xChange][y+yChange]==EMPTY||board[x+xChange][y+yChange]==PAWNB||board[x+xChange][y+yChange]==HORSEB||board[x+xChange][y+yChange]==BISHOPB||board[x+xChange][y+yChange]==ROOKB||board[x+xChange][y+yChange]==QUEENB)
+	else if(board[x+xChange][y+yChange]==ENEMYOREMPTY)
 	{
 		board[x][y]==EMPTY;
 		board[x+xChange][y+yChange]==ROOK;
@@ -124,7 +126,7 @@ int moveBishop(int board[8][8], int x, int y)
 		printf("Input other than 0\n");
 		return 0;
 	}
-	else if(board[x+movement][y+movement]==EMPTY||board[x+movement][y+movement]==PAWNB||board[x+movement][y+movement]==HORSEB||board[x+movement][y+movement]==BISHOPB||board[x+movement][y+movement]==ROOKB||board[x+movement][y+movement]==QUEENB)
+	else if(board[x+movement][y+movement]==ENEMYOREMPTY)
 	{
 		board[x][y] == EMPTY;
 		board[x+movement][y+movement]==BISHOP;
@@ -151,9 +153,9 @@ int moveHorse(int board[8][8], int x, int y)
 		printf("Input other than 0\n");
 		return 0;
 	}
-	else if(board[newX][newY]==EMPTY||board[newX][newY]==PAWNB||board[newX][newY]==HORSEB||board[newX][newY]==BISHOPB||board[newX][newY]==ROOKB||board[newX][newY]==QUEENB)
+	else if(board[newX][newY]==ENEMYOREMPTY)
 	{
-		if(board[newX][newY]==board[x+1][y+2]||board[newX][newY]==board[x+1][y-2]||board[newX][newY]==board[x-1][y+2]||board[newX][newY]==board[x-1][y-2]||board[newX][newY]==board[x+2][y+1]||board[newX][newY]==board[x+2][y-1]||board[newX][newY]==board[x-2][y+1]||board[newX][newY]==board[x-2][y-1])
+		if(board[newX][newY]==(board[x+1][y+2]||board[x+1][y-2]||board[x-1][y+2]||board[x-1][y-2]||board[x+2][y+1]||board[x+2][y-1]||board[x-2][y+1]||board[x-2][y-1]))
 		{
 			board[x][y]=EMPTY;
 			board[newX][newY]=HORSE;
@@ -208,6 +210,7 @@ int moveKing(int board[8][8], int x, int y)
 		board
 	}
 }
+//CHANGE THIS FUNCTION UP. MOVE FUNCTIONS EXECUTE COMMANDS OTHER THAN JUST RETURNING
 int check(int board[8][8], int x, int y)
 {	
 	if(moveQueenB(board,x,y)==1)
