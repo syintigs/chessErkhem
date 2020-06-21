@@ -442,6 +442,12 @@ int moveHorse(int board[8][8], int x, int y)
 					break;
 
 			}
+			
+		default: 
+			printf("Outside board or friendly unit\n");
+			return 0;
+			break;
+	}
 
 
 
