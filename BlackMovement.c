@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 #define EMPTY 9
 #define PAWN 1
@@ -26,17 +27,24 @@
 int moveBlackPawn(int board[8][8], int x, int y)
 {
 	int newX;
-       	int newY:
+       	int newY;
 	printf("Choose new X:");	
 	scanf("%d\n",newX);
 	printf("Choose new Y:");
 	scanf("%d\n", newY);
 	switch(board[newX][newY])
 	{
-		case QUEEN: case PAWN: case HORSE: case BISHOP: case ROOK: case EMPTY:
+		case QUEEN:
+	       	case PAWN:
+	       	case HORSE:
+	       	case BISHOP:
+	       	case ROOK:
+	       	case EMPTY:
 			switch(board[newX][newY])
 			{
-				case board[x+1][y]: case board[x+1][y-1]: case bpard[x+1][y+1]:
+				case board[x+1][y]:
+			       	case board[x+1][y-1]:
+			       	case board[x+1][y+1]:
 					board[x][y] = EMPTY;
 					board[newX][newY] = PAWNB;
 					return 1;
@@ -50,10 +58,10 @@ int moveBlackRook(int board[8][8], int x, int y)
 {
 	int newX; 
 	int newY; 
-	printf("Choose new X:")
-	scanf("\d\n", newX);
+	printf("Choose new X:");
+	scanf("%d\n", newX);
 	printf("Choose new Y:");
-	scanf("\d\n", newY);
+	scanf("%d\n", newY);
 	if(newX==x && newY==y)
 	{
 		printf("Input other than where you are\n");
@@ -61,10 +69,16 @@ int moveBlackRook(int board[8][8], int x, int y)
 	}
 	switch(board[newX][newY])
 	{
-		case QUEEN: case PAWN: case HORSE: case BISHOP: case ROOK: case EMPTY:
+		case QUEEN:
+	       	case PAWN:
+	       	case HORSE:
+	       	case BISHOP:
+	       	case ROOK:
+	       	case EMPTY:
 			switch(board[newX][newY])
 			{
-				case board[newX][y]: case board[x][newY]
+				case board[newX][y]:
+			       	case board[x][newY]:
 					board[x][y]= EMPTY;
 					board[newX][newY]=ROOKB;
 					return 1;
@@ -82,15 +96,15 @@ int moveBlackBishop(int board[8][8], int x, int y)
 	int newX;
 	int newY;
 	printf("Choose a new X:");
-	scanf("\d\n", newX);
+	scanf("%d\n", newX);
 	printf("Choose a new Y:");
-	scanf("\d\n", newY);
+	scanf("%d\n", newY);
 	if(x==newX && y==newY)
 	{
 		printf("Input other than 0\n");
 		return 0;
 	}
-	switch(board[x+movement][y+movement])
+	switch(board[newX][newY])
 	{
 		case QUEEN: case PAWN: case HORSE: case BISHOP: case ROOK: case EMPTY:
 			if(abs(newX-x)==abs(newY-y))
@@ -125,10 +139,15 @@ int moveBlackHorse(int board[8][8], int x, int y)
 	}
 	switch(board[newX][newY])
 	{
-		case QUEEN: case PAWN: case HORSE: case BISHOP: case ROOK: case EMPTY:
-			switch(board[newX]newY)
+		case QUEEN:
+	       	case PAWN:
+	       	case HORSE:
+	       	case BISHOP: 
+		case ROOK:
+	       	case EMPTY:
+			switch(board[newX][newY])
 			{
-				case board(x+1][y+2]: case board[x+1][y-2]:
+				case board[x+1][y+2]: case board[x+1][y-2]:
 				case board[x-1][y+2]: case board[x-1][y-2]:
 				case board[x+2][y+1]: case board[x+2][y-1]:
 				case board[x-2][y+1]: case board[x-2][y-1]:
