@@ -66,7 +66,7 @@ int moveBlackRook(int board[8][8], int x, int y)
 			{
 				case board[newX][y]: case board[x][newY]
 					board[x][y]= EMPTY;
-					board[newX][newY]=ROOK;
+					board[newX][newY]=ROOKB;
 					return 1;
 				default:
 					printf("Not a rook movement\n");
@@ -79,10 +79,13 @@ int moveBlackRook(int board[8][8], int x, int y)
 
 int moveBlackBishop(int board[8][8], int x, int y)
 {
-	int movement;
-	printf("Move left or right(Negative for left, positive for right):");
-	scanf("\d\n", movement);
-	if(movement==0)
+	int newX;
+	int newY;
+	printf("Choose a new X:");
+	scanf("\d\n", newX);
+	printf("Choose a new Y:");
+	scanf("\d\n", newY);
+	if(x==newX && y==newY)
 	{
 		printf("Input other than 0\n");
 		return 0;
@@ -90,9 +93,17 @@ int moveBlackBishop(int board[8][8], int x, int y)
 	switch(board[x+movement][y+movement])
 	{
 		case QUEEN: case PAWN: case HORSE: case BISHOP: case ROOK: case EMPTY:
-			board[x][y] =EMPTY;
-			board[x+movement][y+movement]=BISHOP;
-			return 1;
+			if(abs(newX-x)==abs(newY-y))
+			{
+				board[x][y]= EMPTY;
+				board[newX][newY] = BISHOPB;
+				return 1;
+			}
+			else
+			{
+				printf("Not a bishop movement\n");
+				return 0;
+			}
 		default:
 			printf("Not inside board or friendly unit\n");
 			return 0;
@@ -107,7 +118,7 @@ int moveBlackHorse(int board[8][8], int x, int y)
 	scanf("%d\n", newX);
 	printf("Choose a new Y location:");
 	scanf("%d\n", newY);
-	if(movement==0)
+	if(newX==x && newY==y)
 	{
 		printf("Input other than 0\n");
 		return 0;
@@ -122,7 +133,7 @@ int moveBlackHorse(int board[8][8], int x, int y)
 				case board[x+2][y+1]: case board[x+2][y-1]:
 				case board[x-2][y+1]: case board[x-2][y-1]:
 					board[x][y]=EMPTY;
-					board[newX][newY]=HORSE;	
+					board[newX][newY]=HORSEB;	
 					return 1;
 				default:
 					printf("Not a valid horse movement\n");
