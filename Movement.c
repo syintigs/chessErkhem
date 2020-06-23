@@ -180,21 +180,6 @@ int moveHorse(int board[8][8], int x, int y)
 		printf("Input other than 0\n");
 		return 0;
 	}
-	else if(board[newX][newY]==ENEMYOREMPTY)
-	{
-		if(board[newX][newY]==(board[x+1][y+2]||board[x+1][y-2]||board[x-1][y+2]||board[x-1][y-2]||board[x+2][y+1]||board[x+2][y-1]||board[x-2][y+1]||board[x-2][y-1]))
-		{
-			board[x][y]=EMPTY;
-			board[newX][newY]=HORSE;
-			return 1;
-		}
-		else
-		{
-			printf("Not a valid horse movement\n");
-			return 0;
-		}
-	}
-#define ENEMYOREMPTY (EMPTY||PAWNB||ROOKB||BISHOPB||HORSEB||QUEENB)
 	switch(board[newX][newY])
 	{
 		case PAWNB:
@@ -449,18 +434,6 @@ int moveHorse(int board[8][8], int x, int y)
 			break;
 	}
 
-
-
-
-
-
-
-	}
-	else
-	{
-		printf("Outside board or friendly unit\n");
-		return 0;
-	}
 }
 int moveQueen(int board[8][8], int x, int y)
 {
