@@ -152,17 +152,16 @@ int moveBishop(int board[8][8], int x, int y)
 		printf("Input other than 0\n");
 		return 0;
 	}
-	else if(board[x+movement][y+movement]==ENEMYOREMPTY)
+	switch(board[x+movement][y+movement])
 	{
-		board[x][y] == EMPTY;
-		board[x+movement][y+movement]==BISHOP;
-		return 1; 
-	}
-	else
-	{
-		printf("Not inside board or friendly unit\n");
-		return 0;
-	}
+		case QUEENB: case PAWNB: case HORSEB: case BISHOPB: case ROOKB: case EMPTY:
+			board[x][y] =EMPTY;
+			board[x+movement][y+movement]=BISHOP;
+			return 1;
+		default:
+			printf("Not inside board or friendly unit\n");
+			return 0;
+ 	}
 }
 
 int moveHorse(int board[8][8], int x, int y)
@@ -183,15 +182,11 @@ int moveHorse(int board[8][8], int x, int y)
 		case QUEENB: case PAWNB: case HORSEB: case BISHOPB: case ROOKB: case EMPTY:
 			switch(board[newX]newY)
 			{
-				case board(x+1][y+2]:
-	       			case board[x+1][y-2]:
-				case board[x-1][y+2]:
-				case board[x-1][y-2]:
-				case board[x+2][y+1]:
-				case board[x+2][y-1]:
-				case board[x-2][y+1]:
-				case board[x-2][y-1]:
-					board[x][y]==EMPTY;
+				case board(x+1][y+2]: case board[x+1][y-2]:
+				case board[x-1][y+2]: case board[x-1][y-2]:
+				case board[x+2][y+1]: case board[x+2][y-1]:
+				case board[x-2][y+1]: case board[x-2][y-1]:
+					board[x][y]=EMPTY;
 					board[newX][newY]=HORSE;	
 					return 1;
 				default:
