@@ -175,16 +175,19 @@ int moveKing(int board[8][8], int x, int y)
 	scanf("%d\n", newX);
 	printf("Choose new y:");
 	scanf("%d\n",newY);
-
-	if(board[newX][newY]==board[x][y+1]||board[newX][newY]==board[x][y-1]||board[newX][newY]==board[x-1][y+1]||board[newX][newY]==board[x-1][y-1]||board[newX][newY]==board[x-1][y]||board[newX][newY]==board[x+1][y+1]||board[newX][newY]==board[x+1][y-1]||board[newX][newY]==board[x+1][y])
+	switch(board[newX][newY])
 	{
-		if(check(board,x,y)
-		{
-			prinf("You'll be checked\n");
-			return 0;
-		}
-		board[x][y]==EMPTY;
-		board
+		case board[x][y+1]: case board[x][y-1]:
+		case board[x+1][y+1]: case board[x+1][y]: case board[x+1][y-1]:
+		case board[x-1][y+1]: case board[x-1][y]: case board[x-1][y-1]:
+			if(check(board,x,y))
+			{
+				printf("You'll be checked\n");
+				return 0;
+			}
+			board[x][y]= EMPTY;
+			board[newX][newY] =KING;
+			return 1;
 	}
 }
 //CHANGE THIS FUNCTION UP. MOVE FUNCTIONS EXECUTE COMMANDS OTHER THAN JUST RETURNING
