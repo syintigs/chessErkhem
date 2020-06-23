@@ -50,13 +50,13 @@ int movePawn(int board[8][8], int x, int y)
 
 int moveRook(int board[8][8], int x, int y)
 {
-	int xChange; 
-	int yChange; 
-	printf("Choose vertical movement:")
-	scanf("\d\n", xChange);
-	printf("Choose horizontal movement:");
-	scanf("\d\n", yChange);
-	if(Change==0 && yChange ==0)
+	int newX; 
+	int newY; 
+	printf("Choose new X:")
+	scanf("\d\n", newX);
+	printf("Choose new Y:");
+	scanf("\d\n", newY);
+	if(newX==0 && newY ==0)
 	{
 		printf("Input other than 0)\n");
 		return 0;
