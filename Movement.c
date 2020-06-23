@@ -16,18 +16,12 @@
 #define KINGB -6
 
 /*Table of Content
- *0-100 Pawn
- *100-300 Rook
- *300-500 Bishop
- *500-700 Horse
- *700-900 Queen
- *900-1100 King
- *1200-1300 Black Pawn
- *1300-1500 Black Rook
- *1500-1700 Black Bishop
- *1700-1900 Black Horse
- *1900-2100 Black Queen
- *2100-2300 Black King
+ *26 Pawn
+ *69 Rook
+ *94 Bishop
+ *116 Horse
+ *151 Queen
+ *170 King
  */
 int movePawn(int board[8][8], int x, int y)
 {
@@ -71,50 +65,6 @@ int movePawn(int board[8][8], int x, int y)
 		return 0;
 	}	
 }	
-
-int movePawn(int board[8][8], int x, int y)
-{
-	int checker = 0; 
-	if(board[x+1][y] == EMPTY)
-	{
-		printf("Go forward:");
-		scanf("\d\n", checker);
-		if(checker==1)
-		{
-			board[x][y]==EMPTY;
-			board[x+1][y] == PAWN;
-			return 1;
-		}
-	}
-	else if(board[x+1][y-1]==PAWNB)
-	{
-		printf("Eat Left:");
-		scanf("\d\n", checker);
-		if(checker==1)
-		{
-			board[x][y]==EMPTY;
-			board[x+1][y-1]==PAWN;
-			return 1;
-		}
-	}
-	else if(board[x+1][y+1]==PAWNB)
-	{
-		printf("Eat right:");
-		scanf("\d\n", checker);
-		if(checker==1)
-		{
-			board[x][y]==EMPTY;
-			board[x+1][y+1] ==PAWN;
-			return 1;
-		}
-	}
-	else
-	{
-		printf("Choose new coordinate\n");
-		return 0;
-	}	
-}	
-
 
 int moveRook(int board[8][8], int x, int y)
 {
@@ -216,6 +166,7 @@ int moveQueen(int board[8][8], int x, int y)
 		printf("Wrong input\n");
 	}
 }
+
 int moveKing(int board[8][8], int x, int y)
 {
 	int newX;
