@@ -74,14 +74,14 @@ int moveRook(int board[8][8], int x, int y)
 	scanf("\d\n", xChange);
 	printf("Choose horizontal movement:");
 	scanf("\d\n", yChange);
-	ifxChange==0 && yChange ==0)
+	if(Change==0 && yChange ==0)
 	{
 		printf("Input other than 0)\n");
 		return 0;
 	}
 	switch(board[x+xChange][y+yChange])
 	{
- 		case QUEENB: case HORSEB: case BISHOPB: case ROOKB: case QUEENB: case EMPTY:
+		case QUEENB: case PAWNB: case HORSEB: case BISHOPB: case ROOKB: case EMPTY:
 			board[x][y] = EMPTY;
 			board[x+xChange][y+yChange=ROOK;
 			return 1;
