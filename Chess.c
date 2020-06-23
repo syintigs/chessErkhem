@@ -27,8 +27,45 @@ int main(void)
 		{ PAWN,PAWN,PAWN,PAWN,PAWN,PAWN,PAWN,PAWN},
 		{ ROOK, HORSE, BISHOP, QUEEN, KING, BISHOP, HORSE, ROOK}
 	};
+	while(1)
+	{
+		printBoard(chessBoard);
+		chooseWhiteUnit;
+	}
+		
 	return 0;
 }	
+void chooseWhiteUnit(int board[8][8], int x, int y)
+{
+	if(board[x][y]==PAWN)
+	{
+		movePawn(board,x,y);
+	}
+	if(board[x][y]==BISHOP)
+	{
+		moveBishop(board,x,y);
+	}
+	if(board[x][y]==ROOK)
+	{
+		moveRook(board,x,y);
+	}
+	if(board[x][y]==QUEEN)
+	{
+		moveQueen(board,x,y);
+	}
+	if(board[x][y]==HORSE)
+	{
+		moveHorse(board,x,y);
+	}
+	if(board[x][y]==KING)
+	{
+		moveKing(board,x,y);
+	}
+	else
+	{
+		printf("Choose your own unit\n");
+	}
+}
 void printBoard(int board[8][8])
 {
 	int i;
