@@ -141,7 +141,6 @@ int moveRook(int board[8][8], int x, int y)
 		return 0;
 	}
 }
-	
 
 int moveBishop(int board[8][8], int x, int y)
 {
@@ -164,7 +163,6 @@ int moveBishop(int board[8][8], int x, int y)
 		printf("Not inside board or friendly unit\n");
 		return 0;
 	}
-	
 }
 
 int moveHorse(int board[8][8], int x, int y)
@@ -182,259 +180,30 @@ int moveHorse(int board[8][8], int x, int y)
 	}
 	switch(board[newX][newY])
 	{
-		case PAWNB:
+		case QUEENB: case PAWNB: case HORSEB: case BISHOPB: case ROOKB: case EMPTY:
 			switch(board[newX]newY)
 			{
 				case board(x+1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
+	       			case board[x+1][y-2]:
 				case board[x-1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
 				case board[x-1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
 				case board[x+2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
 				case board[x+2][y-1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
 				case board[x-2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
 				case board[x-2][y-1]:
 					board[x][y]==EMPTY;
 					board[newX][newY]=HORSE;	
 					return 1;
-					break;
 				default:
 					printf("Not a valid horse movement\n");
 					return 0;
-					break;
-
 			}
-		case ROOKB:
-			switch(board[newX]newY)
-			{
-				case board(x+1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+2][y-1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-2][y-1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				default:
-					printf("Not a valid horse movement\n");
-					return 0;
-					break;
-
-			}
-		case BISHOPB:
-			switch(board[newX]newY)
-			{
-				case board(x+1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+2][y-1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-2][y-1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				default:
-					printf("Not a valid horse movement\n");
-					return 0;
-					break;
-
-			}
-		case QUEENB:
-			switch(board[newX]newY)
-			{
-				case board(x+1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+2][y-1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-2][y-1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				default:
-					printf("Not a valid horse movement\n");
-					return 0;
-					break;
-
-			}
-		case EMPTY:
-			switch(board[newX]newY)
-			{
-				case board(x+1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-1][y+2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-1][y-2]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x+2][y-1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-2][y+1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				case board[x-2][y-1]:
-					board[x][y]==EMPTY;
-					board[newX][newY]=HORSE;	
-					return 1;
-					break;
-				default:
-					printf("Not a valid horse movement\n");
-					return 0;
-					break;
-
-			}
-			
 		default: 
 			printf("Outside board or friendly unit\n");
 			return 0;
-			break;
 	}
-
 }
+
 int moveQueen(int board[8][8], int x, int y)
 {
 	int rookOrBishop =0;
