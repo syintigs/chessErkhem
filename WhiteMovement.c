@@ -56,17 +56,25 @@ int moveRook(int board[8][8], int x, int y)
 	scanf("\d\n", newX);
 	printf("Choose new Y:");
 	scanf("\d\n", newY);
-	if(newX==0 && newY ==0)
+	if(newX==x && newY ==y)
 	{
-		printf("Input other than 0)\n");
+		printf("Input other than where you are\n");
 		return 0;
 	}
-	switch(board[x+xChange][y+yChange])
+	switch(board[newX][newY])
 	{
 		case QUEENB: case PAWNB: case HORSEB: case BISHOPB: case ROOKB: case EMPTY:
-			board[x][y] = EMPTY;
-			board[x+xChange][y+yChange=ROOK;
-			return 1;
+			switch(board[newX][newY])
+			{
+			 	case board[newX][y]: case board[x][newY]
+					board[x][y]= EMPTY;
+					board[newX][newY]=ROOK;
+					return 1;
+				default:
+					printf("Not a rook movement\n");
+					return 0;
+			}
+		
 		default:
 			printf("Not inside board or friendly unit \n");
 			return 0;
