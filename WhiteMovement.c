@@ -25,46 +25,28 @@
  */
 int movePawn(int board[8][8], int x, int y)
 {
-	int checker = 0; 
-	if(board[x+1][y] == EMPTY)
+	int newX;
+       	int newY;	
+	printf("Choose new X:");
+	scanf("%d\n",newX);
+	printf("Choose new Y:");
+	scanf("%d\n",newY);
+	switch(board[newX][newY])
 	{
-		printf("Go forward:");
-		scanf("\d\n", checker);
-		if(checker==1)
-		{
-			board[x][y]==EMPTY;
-			board[x+1][y] == PAWN;
-			return 1;
-		}
+		case QUEENB: case PAWNB: case HORSEB: case BISHOPB: case ROOKB: case EMPTY:
+			switch(board[newX][newY])
+			{
+			case board[x+1][y]: case board[x+1][y-1]: case board[x+1][y+1]:
+				board[x][y]=EMPTY;
+				board[newX][newY]=PAWN;
+				return 1;
+			}	
 	}
-	else if(board[x+1][y-1]==PAWNB)
-	{
-		printf("Eat Left:");
-		scanf("\d\n", checker);
-		if(checker==1)
-		{
-			board[x][y]==EMPTY;
-			board[x+1][y-1]==PAWN;
-			return 1;
-		}
-	}
-	else if(board[x+1][y+1]==PAWNB)
-	{
-		printf("Eat right:");
-		scanf("\d\n", checker);
-		if(checker==1)
-		{
-			board[x][y]==EMPTY;
-			board[x+1][y+1] ==PAWN;
-			return 1;
-		}
-	}
-	else
-	{
-		printf("Choose new coordinate\n");
-		return 0;
-	}	
-}	
+	printf("Choose new coordinates.\n");
+	return 0;
+
+}
+		
 
 int moveRook(int board[8][8], int x, int y)
 {
