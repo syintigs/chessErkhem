@@ -40,14 +40,13 @@ int moveBlackPawn(int board[8][8], int x, int y)
 	       	case BISHOP:
 	       	case ROOK:
 	       	case EMPTY:
-			switch(board[newX][newY])
+			if(board[newX][newY]==board[x+1][y]
+			|| board[newX][newY]==board[x+1][y-1]
+			|| board[newX][newY]==board[x+1][y+1])
 			{
-				case board[x+1][y]:
-			       	case board[x+1][y-1]:
-			       	case board[x+1][y+1]:
-					board[x][y] = EMPTY;
-					board[newX][newY] = PAWNB;
-					return 1;
+				board[x][y]= EMPTY;
+				board[newX][newY] = PAWNB;
+				return 1;
 			}
 	}	
 	printf("Choose new coordinate\n");
@@ -75,15 +74,17 @@ int moveBlackRook(int board[8][8], int x, int y)
 	       	case BISHOP:
 	       	case ROOK:
 	       	case EMPTY:
-			switch(board[newX][newY])
+			if(board[newX][newY]==board[newX][y]
+			|| board[newX][newY]==board[x][newY])
 			{
-				case board[newX][y]:
-			       	case board[x][newY]:
-					board[x][y]= EMPTY;
-					board[newX][newY]=ROOKB;
-					return 1;
-				default:
-					printf("Not a rook movement\n");
+				board[x][y]= EMPTY;
+				board[newX][newY]=ROOKB;
+				return 1;
+			}
+			else
+			{
+				printf("not a rook movement");
+				return 0;
 			}
 		default:
 			printf("Not inside board or friendly unit \n");
