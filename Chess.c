@@ -75,59 +75,23 @@ void printBoard(int board[8][8])
 			{
 				printf(GREEN "%d      " COLORRESET, j);
 			}
-
-			else if(board[i-1][j-1]==EMPTY)
+			switch(board[i-1][j-1])
 			{
-				printf(GREEN "-      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==PAWN)
-			{
-				printf(GREEN "P      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==ROOK)
-			{
-				printf(GREEN "R      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==BISHOP)
-			{
-				printf(GREEN "B      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==QUEEN)
-			{
-				printf(GREEN "Q      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==KING)
-			{
-				printf(GREEN "K      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==HORSE)
-			{
-				printf(GREEN "H      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==PAWNB)
-			{
-				printf(RED "P      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==ROOKB)
-			{
-				printf(RED "R      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==BISHOPB)
-			{
-				printf(RED "B      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==QUEENB)
-			{
-				printf(RED "Q      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==KINGB)
-			{
-				printf(RED "K      " COLORRESET);
-			}
-			else if(board[i-1][j-1]==HORSEB)
-			{
-				printf(RED "H      " COLORRESET);
-			}
+				
+				case EMPTY:  printf(RED "-      " COLORRESET); break;
+				case PAWN:  printf(GREEN "P      " COLORRESET);break;
+				case HORSE:  printf(GREEN "H      " COLORRESET);break;
+				case BISHOP:  printf(GREEN "B      " COLORRESET);break;
+				case ROOK:  printf(GREEN "R      " COLORRESET);break;
+				case QUEEN:  printf(GREEN "Q      " COLORRESET);break;
+				case KING:  printf(GREEN "K      " COLORRESET);break;
+				case PAWNB:  printf(RED "P      " COLORRESET);break;
+				case HORSEB: printf(RED "H      " COLORRESET);break;
+				case BISHOPB:  printf(RED "B      " COLORRESET);break;
+				case ROOKB:  printf(RED "R      " COLORRESET);break;
+				case QUEENB:  printf(RED "Q      " COLORRESET);break;
+				case KINGB:  printf(RED "K      " COLORRESET);break;
+			}	
 		}
 		if(i==0)
 		{	
