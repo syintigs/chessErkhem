@@ -64,11 +64,15 @@ void printBoard(int board[8][8])
 		{
 			if(board[i][j]==EMPTY)
 			{
-				printf("--");
+				printf("+0  ");
+			}
+			else if(board[i][j]>0) //white units
+			{
+				printf("+%d  ", board[i][j]);
 			}
 			else
 			{
-				printf("%d\n",board[i][j]);
+				printf("%d  ",board[i][j]);
 			}
 		}
 		printf("\n");
