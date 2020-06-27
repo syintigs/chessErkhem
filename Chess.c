@@ -67,30 +67,66 @@ void printBoard(int board[8][8])
 	{
 		for(j=0;j<9;j++)
 		{
-			if(i==0 && j==0)
+			if(j==0)
 			{
-				printf(GREEN "+%d       " COLORRESET, j);
+				printf(GREEN "%d        " COLORRESET, i);
 			}
 			else if(i==0)
 			{
-				printf(GREEN "+%d     " COLORRESET, j);
-			}
-			else if(j==0)
-			{
-				printf(GREEN "+%d       " COLORRESET, i);
+				printf(GREEN "%d      " COLORRESET, j);
 			}
 
 			else if(board[i-1][j-1]==EMPTY)
 			{
-				printf(GREEN "+0     " COLORRESET);
+				printf(GREEN "-      " COLORRESET);
 			}
-			else if(board[i-1][j-1]>0) //white units
+			else if(board[i-1][j-1]==PAWN)
 			{
-				printf(GREEN "+%d     " COLORRESET, board[i-1][j-1]);
+				printf(GREEN "P      " COLORRESET);
 			}
-			else
+			else if(board[i-1][j-1]==ROOK)
 			{
-				printf(RED "%d     " COLORRESET,board[i-1][j-1]);
+				printf(GREEN "R      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==BISHOP)
+			{
+				printf(GREEN "B      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==QUEEN)
+			{
+				printf(GREEN "Q      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==KING)
+			{
+				printf(GREEN "K      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==HORSE)
+			{
+				printf(GREEN "H      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==PAWNB)
+			{
+				printf(RED "P      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==ROOKB)
+			{
+				printf(RED "R      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==BISHOPB)
+			{
+				printf(RED "B      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==QUEENB)
+			{
+				printf(RED "Q      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==KINGB)
+			{
+				printf(RED "K      " COLORRESET);
+			}
+			else if(board[i-1][j-1]==HORSEB)
+			{
+				printf(RED "H      " COLORRESET);
 			}
 		}
 		if(i==0)
