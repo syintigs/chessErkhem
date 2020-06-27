@@ -174,11 +174,11 @@ int moveWhiteQueen(int board[8][8], int x, int y)
 	scanf("%d\n",rookOrBishop);
 	if(rookOrBishop==1)
 	{
-		moveRook(board, x, y);
+		moveWhiteRook(board, x, y);
 	}
 	else if(rookOrBishop==2)
 	{
-		moveBishop(board,x,y);
+		moveWhiteBishop(board,x,y);
 	}
 	else
 	{
