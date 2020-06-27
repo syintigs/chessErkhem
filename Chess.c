@@ -29,23 +29,23 @@ void chooseWhiteUnit(int board[8][8])
 	{
 		moveWhitePawn(board,x,y);
 	}
-	if(board[x][y]==BISHOP)
+	else if(board[x][y]==BISHOP)
 	{
 		moveWhiteBishop(board,x,y);
 	}
-	if(board[x][y]==ROOK)
+	else if(board[x][y]==ROOK)
 	{
 		moveWhiteRook(board,x,y);
 	}
-	if(board[x][y]==QUEEN)
+	else if(board[x][y]==QUEEN)
 	{
 		moveWhiteQueen(board,x,y);
 	}
-	if(board[x][y]==HORSE)
+	else if(board[x][y]==HORSE)
 	{
 		moveWhiteHorse(board,x,y);
 	}
-	if(board[x][y]==KING)
+	else if(board[x][y]==KING)
 	{
 		moveWhiteKing(board,x,y);
 	}

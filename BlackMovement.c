@@ -39,12 +39,18 @@ int moveBlackPawn(int board[8][8], int x, int y)
 	       	case HORSE:
 	       	case BISHOP:
 	       	case ROOK:
-	       	case EMPTY:
-			if(newX==x+1||
-			(newY==y||newY==y-1||newY==y+1))
+			if(newX==x+1&&
+			(newY==y-1||newY==y+1))
 			{
 				board[x][y]= EMPTY;
 				board[newX][newY] = PAWNB;
+				return 1;
+			}
+	       	case EMPTY:
+			if(newX==x+1 && newY==y)
+			{
+				board[x][y]=EMPTY;
+				board[newX][newY]=PAWNB;
 				return 1;
 			}
 	}	
