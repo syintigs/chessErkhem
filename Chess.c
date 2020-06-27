@@ -22,9 +22,9 @@ void chooseWhiteUnit(int board[8][8])
 	int x;
 	int y;
 	printf("Input x:");
-	scanf("%d\n",x);
+	scanf("%d",&x);
 	printf("Input y:");
-	scanf("%d\n",y);
+	scanf("%d",&y);
 	if(board[x][y]==PAWN)
 	{
 		moveWhitePawn(board,x,y);

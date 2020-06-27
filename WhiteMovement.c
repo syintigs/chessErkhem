@@ -28,9 +28,9 @@ int moveWhitePawn(int board[8][8], int x, int y)
 	int newX;
        	int newY;	
 	printf("Choose new X:");
-	scanf("%d\n",newX);
+	scanf("%d",&newX);
 	printf("Choose new Y:");
-	scanf("%d\n",newY);
+	scanf("%d",&newY);
 	switch(board[newX][newY])
 	{
 		case QUEENB:
@@ -58,9 +58,9 @@ int moveWhiteRook(int board[8][8], int x, int y)
 	int newX; 
 	int newY; 
 	printf("Choose new X:");
-	scanf("%d\n", newX);
+	scanf("%d", &newX);
 	printf("Choose new Y:");
-	scanf("%d\n", newY);
+	scanf("%d", &newY);
 	if(newX==x && newY ==y)
 	{
 		printf("Input other than where you are\n");
@@ -96,9 +96,9 @@ int moveWhiteBishop(int board[8][8], int x, int y)
 	int newX;
 	int newY;
 	printf("Choose new X:");
-	scanf("%d\n", newX);
+	scanf("%d", &newX);
 	printf("Choose new Y:");
-	scanf("%d\n", newY);
+	scanf("%d", &newY);
 	if(newX==x && newY==y)
 	{
 		printf("Input other than current value\n");
@@ -134,9 +134,9 @@ int moveWhiteHorse(int board[8][8], int x, int y)
 	int newX;
 	int newY;
 	printf("Choose a new X location:");
-	scanf("%d\n", newX);
+	scanf("%d", &newX);
 	printf("Choose a new Y location:");
-	scanf("%d\n", newY);
+	scanf("%d", &newY);
 	if(newX==x && newY==y)
 	{
 		printf("Input other than 0\n");
@@ -171,7 +171,7 @@ int moveWhiteQueen(int board[8][8], int x, int y)
 {
 	int rookOrBishop =0;
 	printf("Lateral or diagonal(1 for lateral, 2 for diagonal):");
-	scanf("%d\n",rookOrBishop);
+	scanf("%d",rookOrBishop);
 	if(rookOrBishop==1)
 	{
 		moveWhiteRook(board, x, y);
@@ -191,9 +191,9 @@ int moveWhiteKing(int board[8][8], int x, int y)
 	int newX;
 	int newY;
 	printf("Choose new x:");
-	scanf("%d\n", newX);
+	scanf("%d", &newX);
 	printf("Choose new y:");
-	scanf("%d\n",newY);
+	scanf("%d",newY);
 	switch(board[newX][newY])
 	{
 		case QUEENB:
