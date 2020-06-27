@@ -58,24 +58,44 @@ void printBoard(int board[8][8])
 {
 	int i;
 	int j;
-	for(i = 0; i<8; i++)
+	for(i = 0; i<9; i++)
 	{
-		for(j=0;j<8;j++)
+		for(j=0;j<9;j++)
 		{
-			if(board[i][j]==EMPTY)
+			if(i==0 && j==0)
 			{
-				printf("+0  ");
+				printf("+%d       ", j);
 			}
-			else if(board[i][j]>0) //white units
+			else if(i==0)
 			{
-				printf("+%d  ", board[i][j]);
+				printf("+%d     ", j);
+			}
+			else if(j==0)
+			{
+				printf("+%d       ", i);
+			}
+
+			else if(board[i-1][j-1]==EMPTY)
+			{
+				printf("+0     ");
+			}
+			else if(board[i-1][j-1]>0) //white units
+			{
+				printf("+%d     ", board[i-1][j-1]);
 			}
 			else
 			{
-				printf("%d  ",board[i][j]);
+				printf("%d     ",board[i-1][j-1]);
 			}
 		}
-		printf("\n");
+		if(i==0)
+		{	
+			printf("\n\n\n\n\n");
+		}
+		else
+		{
+			printf("\n\n\n");
+		}
 	}
 }	
 int main(void)
