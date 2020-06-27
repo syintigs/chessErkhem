@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-
+#include <stdlib.h>
 #define EMPTY 9
 #define PAWN 1
 #define HORSE 2
@@ -57,10 +57,10 @@ int moveRook(int board[8][8], int x, int y)
 {
 	int newX; 
 	int newY; 
-	printf("Choose new X:")
-	scanf("\d\n", newX);
+	printf("Choose new X:");
+	scanf("%d\n", newX);
 	printf("Choose new Y:");
-	scanf("\d\n", newY);
+	scanf("%d\n", newY);
 	if(newX==x && newY ==y)
 	{
 		printf("Input other than where you are\n");
@@ -96,9 +96,9 @@ int moveBishop(int board[8][8], int x, int y)
 	int newX;
 	int newY;
 	printf("Choose new X:");
-	scanf("\d\n", newX);
+	scanf("%d\n", newX);
 	printf("Choose new Y:");
-	scanf("\d\n", newY);
+	scanf("%d\n", newY);
 	if(newX==x && newY==y)
 	{
 		printf("Input other than current value\n");
@@ -150,8 +150,6 @@ int moveHorse(int board[8][8], int x, int y)
 	       	case BISHOPB:
 	       	case ROOKB:
 	       	case EMPTY:
-			switch(board[newX]newY)
-			{
 			if((newX==x+1) && (newY==y+2 || newY==y-2)
 			 ||(newX==x-1) && (newY==y+2 || newY==y-2)
 			 ||(newX==x+2) && (newY==y+1 || newY==y-1)
