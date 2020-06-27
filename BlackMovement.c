@@ -203,7 +203,7 @@ int moveBlackKing(int board[8][8], int x, int y)
 		case ROOK:
 	       	case EMPTY:
 			if((newX==x) && (newY==y+1 || newY==y-1)
-			||(newX==x+1 || newX==x-1) && (newY==y || newY==y+1 || newY==y-1)
+			||(newX==x+1 || newX==x-1) && (newY==y || newY==y+1 || newY==y-1))
 			{
 				/* if(check(board,newX,newY)
 				 {
