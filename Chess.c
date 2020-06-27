@@ -17,6 +17,63 @@
 #define QUEENB -5
 #define KINGB -6
 
+void chooseWhiteUnit(int board[8][8])
+{
+	int x;
+	int y;
+	printf("Input x:");
+	scanf("%d\n",x);
+	printf("Input y:");
+	scanf("%d\n",y);
+	if(board[x][y]==PAWN)
+	{
+		moveWhitePawn(board,x,y);
+	}
+	if(board[x][y]==BISHOP)
+	{
+		moveWhiteBishop(board,x,y);
+	}
+	if(board[x][y]==ROOK)
+	{
+		moveWhiteRook(board,x,y);
+	}
+	if(board[x][y]==QUEEN)
+	{
+		moveWhiteQueen(board,x,y);
+	}
+	if(board[x][y]==HORSE)
+	{
+		moveWhiteHorse(board,x,y);
+	}
+	if(board[x][y]==KING)
+	{
+		moveWhiteKing(board,x,y);
+	}
+	else
+	{
+		printf("Choose your own unit\n");
+	}
+}
+void printBoard(int board[8][8])
+{
+	int i;
+	int j;
+	for(i = 0; i<8; i++)
+	{
+		for(j=0;j<8;j++)
+		{
+			if(board[i][j]==EMPTY)
+			{
+				printf("--");
+			}
+			else
+			{
+				printf("%d\n",board[i][j]);
+			}
+		}
+		printf("\n");
+	}
+}	
 int main(void)
 {
 	int chessBoard[8][8] = {
@@ -36,61 +93,4 @@ int main(void)
 	}
 		
 	return 0;
-}	
-void chooseWhiteUnit(int board[8][8])
-{
-	int x;
-	int y;
-	printf("Input x:");
-	scanf("%d\n",x);
-	printf("Input y:");
-	scanf("%d\n",y);
-	if(board[x][y]==PAWN)
-	{
-		movePawn(board,x,y);
-	}
-	if(board[x][y]==BISHOP)
-	{
-		moveBishop(board,x,y);
-	}
-	if(board[x][y]==ROOK)
-	{
-		moveRook(board,x,y);
-	}
-	if(board[x][y]==QUEEN)
-	{
-		moveQueen(board,x,y);
-	}
-	if(board[x][y]==HORSE)
-	{
-		moveHorse(board,x,y);
-	}
-	if(board[x][y]==KING)
-	{
-		moveKing(board,x,y);
-	}
-	else
-	{
-		printf("Choose your own unit\n");
-	}
-}
-void printBoard(int board[8][8])
-{
-	int i;
-	int j;
-	for(i = 0; i<8; i++)
-	{
-		for(j=0;j<8;j++)
-		{
-			if(board[i][j]==EMPTY)
-			{
-				prinf("--");
-			}
-			else
-			{
-				printf(board[i][j]);
-			}
-		}
-		printf("\n");
-	}
 }	
