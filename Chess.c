@@ -17,6 +17,11 @@
 #define QUEENB -5
 #define KINGB -6
 
+#define GREEN "\x1b[32m"
+#define RED "\x1b[31m"
+#define BLUE  "\x1b[34m"
+#define COLORRESET "\x1b[0m"
+
 void chooseWhiteUnit(int board[8][8])
 {
 	int x;
@@ -64,28 +69,28 @@ void printBoard(int board[8][8])
 		{
 			if(i==0 && j==0)
 			{
-				printf("+%d       ", j);
+				printf(GREEN "+%d       " COLORRESET, j);
 			}
 			else if(i==0)
 			{
-				printf("+%d     ", j);
+				printf(GREEN "+%d     " COLORRESET, j);
 			}
 			else if(j==0)
 			{
-				printf("+%d       ", i);
+				printf(GREEN "+%d       " COLORRESET, i);
 			}
 
 			else if(board[i-1][j-1]==EMPTY)
 			{
-				printf("+0     ");
+				printf(GREEN "+0     " COLORRESET);
 			}
 			else if(board[i-1][j-1]>0) //white units
 			{
-				printf("+%d     ", board[i-1][j-1]);
+				printf(GREEN "+%d     " COLORRESET, board[i-1][j-1]);
 			}
 			else
 			{
-				printf("%d     ",board[i-1][j-1]);
+				printf(RED "%d     " COLORRESET,board[i-1][j-1]);
 			}
 		}
 		if(i==0)
