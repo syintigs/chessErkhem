@@ -1,6 +1,8 @@
 // Y and X are swapped. I got them confused. In this program X is vertical while Y is horizontal.
 #include <stdio.h>
 #include <stdbool.h>
+#include "WhiteMovement.h"
+#include "BlackMovement.h"
 #define EMPTY 9
 #define PAWN 1
 #define HORSE 2
@@ -30,13 +32,19 @@ int main(void)
 	while(1)
 	{
 		printBoard(chessBoard);
-		chooseWhiteUnit;
+		chooseWhiteUnit(chessBoard);
 	}
 		
 	return 0;
 }	
-void chooseWhiteUnit(int board[8][8], int x, int y)
+void chooseWhiteUnit(int board[8][8])
 {
+	int x;
+	int y;
+	printf("Input x:");
+	scanf("%d\n",x);
+	printf("Input y:");
+	scanf("%d\n",y);
 	if(board[x][y]==PAWN)
 	{
 		movePawn(board,x,y);

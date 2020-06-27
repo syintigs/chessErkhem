@@ -23,7 +23,7 @@
  *151 Queen
  *170 King
  */
-int movePawn(int board[8][8], int x, int y)
+int moveWhitePawn(int board[8][8], int x, int y)
 {
 	int newX;
        	int newY;	
@@ -53,7 +53,7 @@ int movePawn(int board[8][8], int x, int y)
 }
 		
 
-int moveRook(int board[8][8], int x, int y)
+int moveWhiteRook(int board[8][8], int x, int y)
 {
 	int newX; 
 	int newY; 
@@ -91,7 +91,7 @@ int moveRook(int board[8][8], int x, int y)
 	}
 }
 
-int moveBishop(int board[8][8], int x, int y)
+int moveWhiteBishop(int board[8][8], int x, int y)
 {
 	int newX;
 	int newY;
@@ -129,7 +129,7 @@ int moveBishop(int board[8][8], int x, int y)
  	}
 }
 
-int moveHorse(int board[8][8], int x, int y)
+int moveWhiteHorse(int board[8][8], int x, int y)
 {
 	int newX;
 	int newY;
@@ -167,7 +167,7 @@ int moveHorse(int board[8][8], int x, int y)
 	}
 }
 
-int moveQueen(int board[8][8], int x, int y)
+int moveWhiteQueen(int board[8][8], int x, int y)
 {
 	int rookOrBishop =0;
 	printf("Lateral or diagonal(1 for lateral, 2 for diagonal):");
@@ -186,7 +186,7 @@ int moveQueen(int board[8][8], int x, int y)
 	}
 }
 
-int moveKing(int board[8][8], int x, int y)
+int moveWhiteKing(int board[8][8], int x, int y)
 {
 	int newX;
 	int newY;
