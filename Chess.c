@@ -22,7 +22,7 @@
 #define BLUE  "\x1b[34m"
 #define COLORRESET "\x1b[0m"
 
-void chooseWhiteUnit(int board[8][8])
+int chooseWhiteUnit(int board[8][8])
 {
 	int x;
 	int y;
@@ -34,31 +34,72 @@ void chooseWhiteUnit(int board[8][8])
 	y--;
 	if(board[x][y]==PAWN)
 	{
-		moveWhitePawn(board,x,y);
+		return moveWhitePawn(board,x,y);
 	}
 	else if(board[x][y]==BISHOP)
 	{
-		moveWhiteBishop(board,x,y);
+		return moveWhiteBishop(board,x,y);
 	}
 	else if(board[x][y]==ROOK)
 	{
-		moveWhiteRook(board,x,y);
+		return moveWhiteRook(board,x,y);
 	}
 	else if(board[x][y]==QUEEN)
 	{
-		moveWhiteQueen(board,x,y);
+		return moveWhiteQueen(board,x,y);
 	}
 	else if(board[x][y]==HORSE)
 	{
-		moveWhiteHorse(board,x,y);
+		return moveWhiteHorse(board,x,y);
 	}
 	else if(board[x][y]==KING)
 	{
-		moveWhiteKing(board,x,y);
+		return moveWhiteKing(board,x,y);
 	}
 	else
 	{
 		printf("Choose your own unit\n");
+		return 0;
+	}
+}
+int chooseBlackUnit(int board[8][8])
+{
+	int x;
+	int y;
+	printf("Input x:");
+	scanf("%d",&y);
+	printf("Input y:");
+	scanf("%d",&x);
+	x--;
+	y--;
+	if(board[x][y]==PAWNB)
+	{
+		return moveBlackPawn(board,x,y);
+	}
+	else if(board[x][y]==BISHOPB)
+	{
+		return moveBlackBishop(board,x,y);
+	}
+	else if(board[x][y]==ROOKB)
+	{
+		return moveBlackRook(board,x,y);
+	}
+	else if(board[x][y]==QUEENB)
+	{
+		return moveBlackQueen(board,x,y);
+	}
+	else if(board[x][y]==HORSEB)
+	{
+		return moveBlackHorse(board,x,y);
+	}
+	else if(board[x][y]==KINGB)
+	{
+		return moveBlackKing(board,x,y);
+	}
+	else
+	{
+		printf("Choose your own unit\n");
+		return 0;
 	}
 }
 void printBoard(int board[8][8])
@@ -114,6 +155,7 @@ void printBoard(int board[8][8])
 }	
 int main(void)
 {
+	int cycle = 1;
 	int chessBoard[8][8] = {
 		{ ROOKB, HORSEB, BISHOPB, QUEENB, KINGB, BISHOPB, HORSEB, ROOKB},
 		{ PAWNB,PAWNB,PAWNB,PAWNB,PAWNB,PAWNB,PAWNB,PAWNB},
@@ -126,9 +168,23 @@ int main(void)
 	};
 	while(1)
 	{
-		printBoard(chessBoard);
-		chooseWhiteUnit(chessBoard);
+		if(cycle==1)
+			printBoard(chessBoard);
+			if(chooseWhiteUnit(chessBoard))
+			{
+				cycle=0;
+			}	
+		if(cycle==0)
+		{
+			printBoard(chessBoard);
+			if(chooseBlackUnit(chessBoard))
+			{
+				cycle =1;
+			}
+		}	
 	}
+
+	
 		
 	return 0;
 }	
