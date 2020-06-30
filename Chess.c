@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "WhiteMovement.h"
 #include "BlackMovement.h"
+#include "CheckAndMate.h"
 #define EMPTY 9
 #define PAWN 1
 #define HORSE 2

@@ -45,7 +45,6 @@ int check(int board[8][8], int x, int y, int enemyX, int enemyY)
 		return 1;
 	}
 }
-	return (check(board, x, y)&&(EMPTY|| 
 int checkMate(int board[8][8], int x, int y)
 {
 	if((check(board,x,y,x+1,y) || (board[x+1][y]<EMPTY && board[x+1][y]>0))

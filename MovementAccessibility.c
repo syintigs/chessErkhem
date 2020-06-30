@@ -168,7 +168,7 @@ int checkQueen(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
 	enemyY--;
-	if(checkRook(board, x, y, enemyX, enemyY) || checkBishop(board,x,y, new X, enemyY))
+	if(checkRook(board, x, y, enemyX, enemyY) || checkBishop(board,x,y, enemyX, enemyY))
 	{
 		return 1;
 	}
