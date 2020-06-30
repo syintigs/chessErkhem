@@ -75,23 +75,26 @@ void printBoard(int board[8][8])
 			{
 				printf(GREEN "%d      " COLORRESET, j);
 			}
-			switch(board[i-1][j-1])
+			else
 			{
-				
-				case EMPTY:  printf(RED "-      " COLORRESET); break;
-				case PAWN:  printf(GREEN "P      " COLORRESET);break;
-				case HORSE:  printf(GREEN "H      " COLORRESET);break;
-				case BISHOP:  printf(GREEN "B      " COLORRESET);break;
-				case ROOK:  printf(GREEN "R      " COLORRESET);break;
-				case QUEEN:  printf(GREEN "Q      " COLORRESET);break;
-				case KING:  printf(GREEN "K      " COLORRESET);break;
-				case PAWNB:  printf(RED "P      " COLORRESET);break;
-				case HORSEB: printf(RED "H      " COLORRESET);break;
-				case BISHOPB:  printf(RED "B      " COLORRESET);break;
-				case ROOKB:  printf(RED "R      " COLORRESET);break;
-				case QUEENB:  printf(RED "Q      " COLORRESET);break;
-				case KINGB:  printf(RED "K      " COLORRESET);break;
-			}	
+				switch(board[i-1][j-1])
+				{
+					
+					case EMPTY:  printf(RED "-      " COLORRESET); break;
+					case PAWN:  printf(GREEN "P      " COLORRESET);break;
+					case HORSE:  printf(GREEN "H      " COLORRESET);break;
+					case BISHOP:  printf(GREEN "B      " COLORRESET);break;
+					case ROOK:  printf(GREEN "R      " COLORRESET);break;
+					case QUEEN:  printf(GREEN "Q      " COLORRESET);break;
+					case KING:  printf(GREEN "K      " COLORRESET);break;
+					case PAWNB:  printf(RED "P      " COLORRESET);break;
+					case HORSEB: printf(RED "H      " COLORRESET);break;
+					case BISHOPB:  printf(RED "B      " COLORRESET);break;
+					case ROOKB:  printf(RED "R      " COLORRESET);break;
+					case QUEENB:  printf(RED "Q      " COLORRESET);break;
+					case KINGB:  printf(RED "K      " COLORRESET);break;
+				}	
+			}
 		}
 		if(i==0)
 		{	
