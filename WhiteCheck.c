@@ -102,6 +102,47 @@ int moveWhiteBishop(int board[8][8], int x, int y, int newX, int newY)
 	newY--;
 	if(abs(newX-x)==abs(newY-y))
 	{
+		int change = abs(newX-x);
+		if(newX>x && newY>y)
+		{
+			for(int i=1; i<change; i++)
+			{
+				if(board[newX-i][newY-i]<EMPTY) //true if Anything other than EMPTY
+				{
+					return 0;
+				}
+			}
+		}	
+		else if(newX>x && y>newY)
+		{
+			for(int i = 1; i<change; i++)
+			{
+				if(board[newX-i][newY+i]<EMPTY) //true if Anything other than EMPTY
+				{
+					return 0;
+				}
+			}
+		}
+		else if(x>newX && newY>y)
+		{
+			for(int i = 0; i<change; i++)
+			{
+				if(board[newX+i][newY-i]<EMPTY) //true if anyhthing other than EMPTY
+				{
+					return 0;
+				}
+			}
+		}
+		else if(x>newX && y>newY)
+		{
+			for(int i = 1; i<change; i++)
+			{
+				if(board[newX+i][newY+i]<EMPTY) //true if Anything other than EMPTY
+				{
+					return 0;
+				}
+			}
+		}
 		return 1;
 	}
 	return 0;
