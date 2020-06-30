@@ -42,9 +42,56 @@ int moveWhiteRook(int board[8][8], int x, int y, int newX, int newY)
 {
 	newX--;
 	newY--;
-	if(newY==y || newX==x)
+	if(newY==y)
 	{
+		int xChange = abs(newX-x);
+		if(newX>x)
+		{
+			for(int i=1; i<xChange; i++)
+			{
+				if(board[newX-i][newY]<EMPTY) //Anything other than EMPTY
+				{
+					return 0;
+				}
+			}
+		}	
+		else if(x>newX)
+		{
+			for(int i = 1; i<xChange; i++)
+			{
+				if(board[newX+1][newY]<EMPTY) //Anything other than EMPTY
+				{
+					return 0;
+				}
+			}
+		}
 		return 1;
+	}
+	else if(newX ==x)
+	{
+		int yChange = abs(newY-x);
+		if(newY>y)
+		{
+			for(int i=1; i<yChange; i++)
+			{
+				if(board[newX][newY-i]<EMPTY) //Anything other than EMPTY
+				{
+					return 0;
+				}
+			}
+		}	
+		else if(y>newY)
+		{
+			for(int i = 1; i<yChange; i++)
+			{
+				if(board[newX][newY+i]<EMPTY) //Anything other than EMPTY
+				{
+					return 0;
+				}
+			}
+		}
+		return 1;
+				
 	}
 	return 0;
 }
