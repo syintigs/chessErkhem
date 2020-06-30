@@ -27,9 +27,11 @@ void chooseWhiteUnit(int board[8][8])
 	int x;
 	int y;
 	printf("Input x:");
-	scanf("%d",&x);
-	printf("Input y:");
 	scanf("%d",&y);
+	printf("Input y:");
+	scanf("%d",&x);
+	x--;
+	y--;
 	if(board[x][y]==PAWN)
 	{
 		moveWhitePawn(board,x,y);
@@ -67,7 +69,11 @@ void printBoard(int board[8][8])
 	{
 		for(j=0;j<9;j++)
 		{
-			if(j==0)
+			if(j==0 && i ==0)
+			{
+				printf("         ");
+			}
+			else if(j==0)
 			{
 				printf(GREEN "%d        " COLORRESET, i);
 			}
