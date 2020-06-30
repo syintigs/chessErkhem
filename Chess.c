@@ -154,6 +154,11 @@ void printBoard(int board[8][8])
 		}
 	}
 }	
+
+
+int checkBoardForCheckmate(int board[8][8]
+
+
 int main(void)
 {
 	int cycle = 1;
@@ -169,15 +174,14 @@ int main(void)
 	};
 	while(1)
 	{
+		printBoard(chessBoard);
 		if(cycle==1)
-			printBoard(chessBoard);
 			if(chooseWhiteUnit(chessBoard))
 			{
 				cycle=0;
 			}	
 		if(cycle==0)
 		{
-			printBoard(chessBoard);
 			if(chooseBlackUnit(chessBoard))
 			{
 				cycle =1;
