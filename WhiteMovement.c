@@ -136,7 +136,7 @@ int moveWhiteRook(int board[8][8], int x, int y)
 						return 1;
 					}
 				}
-				if(y>newY)
+				else if(y>newY)
 				{
 					for(int i = 1 ; i<yChange; i++)
 					{
@@ -150,12 +150,17 @@ int moveWhiteRook(int board[8][8], int x, int y)
 						return 1;
 					}
 				}
+				else 
+				{
+					printf("error #4");
+				}
 			}
 			else
 			{
 				printf("not a rook movement");
 				return 0;
 			}	
+			break;
 		default:
 			printf("Not inside board or friendly unit \n");
 			return 0;
@@ -244,12 +249,17 @@ int moveWhiteBishop(int board[8][8], int x, int y)
 						return 1;
 					}
 				}
+				else
+				{	
+					printf("error #3");
+				}
 			}
 			else
 			{
 				printf("Not a bishop movement\n");
 				return 0;
 			}
+			break;
 		default:
 			printf("Not inside board or friendly unit\n");
 			return 0;
