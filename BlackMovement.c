@@ -187,10 +187,63 @@ int moveBlackBishop(int board[8][8], int x, int y)
 	       	case EMPTY:
 			if(abs(newX-x)==abs(newY-y))
 			{
-				board[x][y]= EMPTY;
-				board[newX][newY] = BISHOPB;
-	
-				return 1;
+				int change = abs(newX-x);
+				if(newX>x && newY>y)
+				{
+					for(int i = 1; i<change; i++)
+					{
+   						if(board[newX-i][newY-i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+						board[x][y] = EMPTY;
+						board[newX][newY] = BISHOPB;	
+						return 1;
+					}
+				}
+				else if(newX>x && y>newY)
+				{
+					for(int i = 1; i<change; i++)
+					{
+						if(board[newX-i][newY+i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+						board[x][y] = EMPTY;
+						board[newX][newY] = BISHOPB;
+						return 1;
+					}
+				}
+				else if(x>newX && newY>y)
+				{
+					for(int i = 1; i<change; i++)
+					{
+						if(board[newX+i][newY-i])
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+						board[x][y] = EMPTY;
+						board[newX][newY] = BISHOPB;
+						return 1;
+					}
+				}
+				else if(x>newX && y>newY)
+				{
+					for(int i = 1; i<change; i++)
+					{
+						if(board[newX+i][newY+i])
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+						board[x][y] = EMPTY;
+						board[newX][newY]= BISHOPB;
+						return 1;
+					}
+				}
 			}
 			else
 			{
