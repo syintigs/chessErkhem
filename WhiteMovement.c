@@ -220,7 +220,7 @@ int moveWhiteBishop(int board[8][8], int x, int y)
 				{
 					for(int i = 1; i<change; i++)
 					{
-						if(board[newX+i][newY-i])
+						if(board[newX+i][newY-i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
 							return 0;
@@ -234,7 +234,7 @@ int moveWhiteBishop(int board[8][8], int x, int y)
 				{
 					for(int i = 1; i<change; i++)
 					{
-						if(board[newX+i][newY+i])
+						if(board[newX+i][newY+i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
 							return 0;
