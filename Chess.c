@@ -156,7 +156,7 @@ void printBoard(int board[8][8])
 }	
 
 
-int checkBoardForCheckmate(int board[8][8]
+//int checkBoardForCheckmate(int board[8][8]
 
 
 int main(void)
