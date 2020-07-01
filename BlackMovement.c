@@ -183,20 +183,24 @@ int moveBlackHorse(int board[8][8], int x, int y)
 
 int moveBlackQueen(int board[8][8], int x, int y)
 {
-	int rookOrBishop =0;
-	printf("Lateral or diagonal(1 for lateral, 2 for diagonal):");
-	scanf("%d",rookOrBishop);
-	if(rookOrBishop==1)
+	int newX;
+	int newY;
+	printf("new X:");
+	scanf("%d",&newY);
+	printf("new Y:");
+	scanf("%d",&newX);
+	if(moveBlackRook(board,x,y))
 	{
-		moveBlackRook(board, x, y);
+		return 1;
 	}
-	else if(rookOrBishop==2)
+	else if(moveBlackBishop(round,x,y))
 	{
-		moveBlackBishop(board,x,y);
+		return 1;
 	}
 	else
 	{
 		printf("Wrong input\n");
+		return 0;
 	}
 }
 

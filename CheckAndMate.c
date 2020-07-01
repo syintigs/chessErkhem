@@ -17,52 +17,148 @@
 #define KINGB -6
 
 //CHANGE THIS FUNCTION UP. MOVE FUNCTIONS EXECUTE COMMANDS OTHER THAN JUST RETURNING
-int check(int board[8][8], int x, int y, int enemyX, int enemyY)
+int checkWhite(int board[8][8], int x, int y, int enemyX, int enemyY)
 {	
-	if(checkPawn(board,x,y, enemyX, enemyY))
+	if(board[enemyX][enemyY] == PAWNB)
 	{
-		printf("You'll be checked\n");
-		return 1;
+		if(checkPawn(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
 	}
-	else if(checkRook(board,x,y, enemyX, enemyY))
+	else if(board[enemyX][enemyY] == ROOKB)
 	{
-		printf("You'll be checked\n");
-		return 1;
+		if(checkRook(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
 	}
-	else if(checkBishop(board,x,y, enemyX, enemyY))
+	else if(board[enemyX][enemyY] == BISHOPB)
 	{
-		printf("You'll be checked\n");
-		return 1;
+		if(checkBishop(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
 	}
-	else if(checkHorse(board,x,y, enemyX, enemyY))
+	else if(board[enemyX][enemyY] == HORSEB)
 	{
-		printf("You'll be checked\n");
-		return 1;
+		if(checkHorse(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
 	}
-	else if(checkQueen(board,x,y, enemyX, enemyY))
+	else if(board[enemyX][enemyY] == QUEENB)
 	{
-		printf("You'll be checked\n");
-		return 1;
+		if(checkQueen(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
+	}
+	else if(board[enemyX][enemyY] == KINGB)
+	{
+		if(checkKing(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
+	}
+	else
+	{
+		return 0;
 	}
 }
-int checkMate(int board[8][8], int x, int y)
+int checkBlack(int board[8][8], int x, int y, int enemyX, int enemyY)
+{	
+	if(board[enemyX][enemyY] == PAWN)
+	{
+		if(checkPawn(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
+	}
+	else if(board[enemyX][enemyY] == ROOK)
+	{
+		if(checkRook(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
+	}
+	else if(board[enemyX][enemyY] == BISHOP)
+	{
+		if(checkBishop(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
+	}
+	else if(board[enemyX][enemyY] == HORSE)
+	{
+		if(checkHorse(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
+	}
+	else if(board[enemyX][enemyY] == QUEEN)
+	{
+		if(checkQueen(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
+	}
+	else if(board[enemyX][enemyY] == KING)
+	{
+		if(checkKing(board,x,y, enemyX, enemyY))
+		{
+			printf("You'll be checked\n");
+			return 1;
+		}
+	}
+	else
+	{
+		return 0;
+	}
+}
+int checkMateBlack(int board[8][8], int x, int y)
 {
-	if((check(board,x,y,x+1,y) || (board[x+1][y]<EMPTY && board[x+1][y]>0))
-	||(check(board,x,y,x-1,y) || (board[x-1][y]<EMPTY && board[x-1][y]>0))
-	||(check(board,x,y,x+1,y+1) || (board[x+1][y+1]<EMPTY && board[x+1][y+1]>0))
-	||(check(board,x,y,x-1,y+1) || (board[x-1][y+1]<EMPTY && board[x-1][y+1]>0))
-	||(check(board,x,y,x,y+1) || (board[x][y+1]<EMPTY && board[x][y+1]>0))
-	||(check(board,x,y,x+1,y-1) || (board[x+1][y-1]<EMPTY && board[x+1][y-1]>0))
-	||(check(board,x,y,x-1,y-1) || (board[x-1][y]<EMPTY && board[x-1][y]>0))
-	||(check(board,x,y,x,y-1) || (board[x][y-1]<EMPTY && board[x][y-1]>0)))	 
+	if((checkBlack(board,x,y,x+1,y) || (board[x+1][y]<EMPTY && board[x+1][y]>0))
+	||(checkBlack(board,x,y,x-1,y) || (board[x-1][y]<EMPTY && board[x-1][y]>0))
+	||(checkBlack(board,x,y,x+1,y+1) || (board[x+1][y+1]<EMPTY && board[x+1][y+1]>0))
+	||(checkBlack(board,x,y,x-1,y+1) || (board[x-1][y+1]<EMPTY && board[x-1][y+1]>0))
+	||(checkBlack(board,x,y,x,y+1) || (board[x][y+1]<EMPTY && board[x][y+1]>0))
+	||(checkBlack(board,x,y,x+1,y-1) || (board[x+1][y-1]<EMPTY && board[x+1][y-1]>0))
+	||(checkBlack(board,x,y,x-1,y-1) || (board[x-1][y]<EMPTY && board[x-1][y]>0))
+	||(checkBlack(board,x,y,x,y-1) || (board[x][y-1]<EMPTY && board[x][y-1]>0)))	 
 	{
 		return 1;
 	}
 	return 0;
 	
 }
-
-
+int checkMateWhite(int board[8][8], int x, int y)
+{
+	if((checkWhite(board,x,y,x+1,y) || (board[x+1][y]<EMPTY && board[x+1][y]>0))
+	||(checkWhite(board,x,y,x-1,y) || (board[x-1][y]<EMPTY && board[x-1][y]>0))
+	||(checkWhite(board,x,y,x+1,y+1) || (board[x+1][y+1]<EMPTY && board[x+1][y+1]>0))
+	||(checkWhite(board,x,y,x-1,y+1) || (board[x-1][y+1]<EMPTY && board[x-1][y+1]>0))
+	||(checkWhite(board,x,y,x,y+1) || (board[x][y+1]<EMPTY && board[x][y+1]>0))
+	||(checkWhite(board,x,y,x+1,y-1) || (board[x+1][y-1]<EMPTY && board[x+1][y-1]>0))
+	||(checkWhite(board,x,y,x-1,y-1) || (board[x-1][y]<EMPTY && board[x-1][y]>0))
+	||(checkWhite(board,x,y,x,y-1) || (board[x][y-1]<EMPTY && board[x][y-1]>0)))	 
+	{
+		return 1;
+	}
+	return 0;
+	
+}
 		
 
 
