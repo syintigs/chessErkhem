@@ -85,13 +85,14 @@ int moveBlackRook(int board[8][8], int x, int y)
 	       	case EMPTY:	
 			if(newY==y)
 			{
-				int xChange = abs(newX-x)
+				int xChange = abs(newX-x);
 				if(newX>x)
 				{
 					for(int i = 1; i<xChange; i++)
 					{
 						if(board[newX-i][newY] < EMPTY)  //Anything other than EMPTY
 						{
+							printf("There are things in the way\n");
 							return 0;
 						}
 					}
@@ -105,6 +106,7 @@ int moveBlackRook(int board[8][8], int x, int y)
 					{
 						if(board[newX+i][newY] <EMPTY) //Anything other than EMPTY
 						{
+							printf("There are things in the way\n");
 							return 0;
 						}
 					}
@@ -119,13 +121,14 @@ int moveBlackRook(int board[8][8], int x, int y)
 			}
 			if(newX==x)
 			{
-				yChange = abs(x-k
+				int yChange = abs(newY-y);
 				if(newY>y)
 				{
 					for(int i = 1; i<yChange; i++)
 					{
 						if(board[newX][newY-i]<EMPTY) //Anything other than EMPTY
 						{
+							printf("There are things in the way\n");
 							return 0;
 						}
 						board[x][y]=EMPTY;
@@ -139,6 +142,7 @@ int moveBlackRook(int board[8][8], int x, int y)
 					{
 						if(board[newX][newY+i]<EMPTY) //Anything other than EMPTY
 						{
+							printf("There are things in the way\n");
 							return 0;
 						}
 						board[x][y] =EMPTY;
@@ -251,7 +255,7 @@ int moveBlackQueen(int board[8][8], int x, int y)
 	{
 		return 1;
 	}
-	else if(moveBlackBishop(round,x,y))
+	else if(moveBlackBishop(board,x,y))
 	{
 		return 1;
 	}
