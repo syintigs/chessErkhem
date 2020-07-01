@@ -60,6 +60,7 @@ int moveWhitePawn(int board[8][8], int x, int y)
 
 }
 		
+int noClipWhiteRook
 
 int moveWhiteRook(int board[8][8], int x, int y)
 {
@@ -84,8 +85,70 @@ int moveWhiteRook(int board[8][8], int x, int y)
 	       	case BISHOPB:
 	       	case ROOKB:
 	       	case EMPTY:
-			if(newY==y || newX==x)
+			if(newY==y)
 			{
+				int xChange = abs(newX-x)
+				if(newX>x)
+				{
+					for(int i = 1; i<xChange; i++)
+					{
+						if(board[newX-i][newY] < EMPTY)  //Anything other than EMPTY
+						{
+							return 0;
+						}
+					}
+					board[x][y] =EMPTY;
+					board[newX][newY] = ROOK;
+					return 1;
+				}
+				else if(x>newX)
+				{
+					for(int i = 1; i<xChange; i++)
+					{
+						if(board[newX+i][newY] <EMPTY) //Anything other than EMPTY
+						{
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY] = ROOK;
+					return 1;
+				}	
+				else
+				{
+					return 0;
+				}
+			}
+			if(newX==x)
+			{
+				yChange = abs(x-k
+				if(newY>y)
+				{
+					for(int i = 1; i<yChange; i++)
+					{
+						if(board[newX][newY-i]<EMPTY) //Anything other than EMPTY
+						{
+							return 0;
+						}
+						board[x][y]=EMPTY;
+						board[newX][newY]=ROOK;
+						return 1;
+					}
+				}
+				if(y>newY)
+				{
+					for(int i = 1 ; i<yChange; i++)
+					{
+						if(board[newX][newY+i]<EMPTY) //Anything other than EMPTY
+						{
+							return 0;
+						}
+						board[x][y] =EMPTY;
+						board[newX][newY]=ROOK;
+						return 1;
+					}
+				}
+			}
 				board[x][y]= EMPTY;
 				board[newX][newY]=ROOK;
 				return 1;
@@ -183,20 +246,24 @@ int moveWhiteHorse(int board[8][8], int x, int y)
 
 int moveWhiteQueen(int board[8][8], int x, int y)
 {
-	int rookOrBishop =0;
-	printf("Lateral or diagonal(1 for lateral, 2 for diagonal):");
-	scanf("%d",rookOrBishop);
-	if(rookOrBishop==1)
+	int newX;
+	int newY
+	printf("new Y:");
+	scanf("%d", &newY);
+	printf("new X:");
+	scanf("%d",&newY);
+	if(moveWhiteRook(board,x,y))
 	{
-		moveWhiteRook(board, x, y);
+		return 1;
 	}
-	else if(rookOrBishop==2)
+	else if(moveWhiteBishop(board,x,y))
 	{
-		moveWhiteBishop(board,x,y);
+		return 1;
 	}
 	else
 	{
 		printf("Wrong input\n");
+		return 0;
 	}
 }
 
