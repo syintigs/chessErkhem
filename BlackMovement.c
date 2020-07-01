@@ -82,12 +82,70 @@ int moveBlackRook(int board[8][8], int x, int y)
 	       	case HORSE:
 	       	case BISHOP:
 	       	case ROOK:
-	       	case EMPTY:
-			if(newY==y || newX==x)
+	       	case EMPTY:	
+			if(newY==y)
 			{
-				board[x][y]= EMPTY;
-				board[newX][newY]=ROOKB;
-				return 1;
+				int xChange = abs(newX-x)
+				if(newX>x)
+				{
+					for(int i = 1; i<xChange; i++)
+					{
+						if(board[newX-i][newY] < EMPTY)  //Anything other than EMPTY
+						{
+							return 0;
+						}
+					}
+					board[x][y] =EMPTY;
+					board[newX][newY] = ROOKB;
+					return 1;
+				}
+				else if(x>newX)
+				{
+					for(int i = 1; i<xChange; i++)
+					{
+						if(board[newX+i][newY] <EMPTY) //Anything other than EMPTY
+						{
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY] = ROOKB;
+					return 1;
+				}	
+				else
+				{
+					return 0;
+				}
+			}
+			if(newX==x)
+			{
+				yChange = abs(x-k
+				if(newY>y)
+				{
+					for(int i = 1; i<yChange; i++)
+					{
+						if(board[newX][newY-i]<EMPTY) //Anything other than EMPTY
+						{
+							return 0;
+						}
+						board[x][y]=EMPTY;
+						board[newX][newY]=ROOKB;
+						return 1;
+					}
+				}
+				if(y>newY)
+				{
+					for(int i = 1 ; i<yChange; i++)
+					{
+						if(board[newX][newY+i]<EMPTY) //Anything other than EMPTY
+						{
+							return 0;
+						}
+						board[x][y] =EMPTY;
+						board[newX][newY]=ROOKB;
+						return 1;
+					}
+				}
 			}
 			else
 			{

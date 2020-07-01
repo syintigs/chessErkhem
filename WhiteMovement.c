@@ -149,9 +149,6 @@ int moveWhiteRook(int board[8][8], int x, int y)
 					}
 				}
 			}
-				board[x][y]= EMPTY;
-				board[newX][newY]=ROOK;
-				return 1;
 			}
 			else
 			{
