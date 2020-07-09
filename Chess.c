@@ -180,7 +180,7 @@ int main(void)
 			{
 				cycle=0;
 			}	
-		if(cycle==0)
+		else if(cycle==0)
 		{
 			if(chooseBlackUnit(chessBoard))
 			{
