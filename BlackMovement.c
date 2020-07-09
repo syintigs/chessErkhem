@@ -125,16 +125,16 @@ int moveBlackRook(int board[8][8], int x, int y)
 				if(newY>y)
 				{
 					for(int i = 1; i<yChange; i++)
-					{
+					{	
 						if(board[newX][newY-i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in the way\n");
 							return 0;
 						}
-						board[x][y]=EMPTY;
-						board[newX][newY]=ROOKB;
-						return 1;
 					}
+					board[x][y] =EMPTY;
+					board[newX][newY]=ROOKB;
+					return 1;
 				}
 				else if(y>newY)
 				{
@@ -145,10 +145,10 @@ int moveBlackRook(int board[8][8], int x, int y)
 							printf("There are things in the way\n");
 							return 0;
 						}
-						board[x][y] =EMPTY;
-						board[newX][newY]=ROOKB;
-						return 1;
 					}
+					board[x][y] =EMPTY;
+					board[newX][newY]=ROOKB;
+					return 1;
 				}
 				else
 				{
@@ -202,10 +202,10 @@ int moveBlackBishop(int board[8][8], int x, int y)
 							printf("There are things in between\n");
 							return 0;
 						}
-						board[x][y] = EMPTY;
-						board[newX][newY] = BISHOPB;	
-						return 1;
 					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= BISHOPB;
+					return 1;
 				}
 				else if(newX>x && y>newY)
 				{
@@ -216,10 +216,10 @@ int moveBlackBishop(int board[8][8], int x, int y)
 							printf("There are things in between\n");
 							return 0;
 						}
-						board[x][y] = EMPTY;
-						board[newX][newY] = BISHOPB;
-						return 1;
 					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= BISHOPB;
+					return 1;
 				}
 				else if(x>newX && newY>y)
 				{
@@ -230,10 +230,10 @@ int moveBlackBishop(int board[8][8], int x, int y)
 							printf("There are things in between\n");
 							return 0;
 						}
-						board[x][y] = EMPTY;
-						board[newX][newY] = BISHOPB;
-						return 1;
 					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= BISHOPB;
+					return 1;
 				}
 				else if(x>newX && y>newY)
 				{
@@ -244,10 +244,11 @@ int moveBlackBishop(int board[8][8], int x, int y)
 							printf("There are things in between\n");
 							return 0;
 						}
-						board[x][y] = EMPTY;
-						board[newX][newY]= BISHOPB;
-						return 1;
 					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= BISHOPB;
+					return 1;
+
 				}
 				else
 				{

@@ -131,11 +131,11 @@ int moveWhiteRook(int board[8][8], int x, int y)
 							printf("There are things in the way\n");
 							return 0;
 						}
-						board[x][y]=EMPTY;
-						board[newX][newY]=ROOK;
-						return 1;
 					}
-				}
+					board[x][y] =EMPTY;
+					board[newX][newY]=ROOK;
+					return 1;
+				}	
 				else if(y>newY)
 				{
 					for(int i = 1 ; i<yChange; i++)
@@ -145,10 +145,10 @@ int moveWhiteRook(int board[8][8], int x, int y)
 							printf("There are things in the way\n");
 							return 0;
 						}
-						board[x][y] =EMPTY;
-						board[newX][newY]=ROOK;
-						return 1;
 					}
+					board[x][y] =EMPTY;
+					board[newX][newY]=ROOK;
+					return 1;
 				}
 				else 
 				{
@@ -202,10 +202,10 @@ int moveWhiteBishop(int board[8][8], int x, int y)
 							printf("There are things in between\n");
 							return 0;
 						}
-						board[x][y] = EMPTY;
-						board[newX][newY] = BISHOP;	
-						return 1;
 					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= BISHOP;
+					return 1;
 				}
 				else if(newX>x && y>newY)
 				{
@@ -216,10 +216,10 @@ int moveWhiteBishop(int board[8][8], int x, int y)
 							printf("There are things in between\n");
 							return 0;
 						}
-						board[x][y] = EMPTY;
-						board[newX][newY] = BISHOP;
-						return 1;
 					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= BISHOP;
+					return 1;
 				}
 				else if(x>newX && newY>y)
 				{
@@ -230,10 +230,10 @@ int moveWhiteBishop(int board[8][8], int x, int y)
 							printf("There are things in between\n");
 							return 0;
 						}
-						board[x][y] = EMPTY;
-						board[newX][newY] = BISHOP;
-						return 1;
 					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= BISHOP;
+					return 1;
 				}
 				else if(x>newX && y>newY)
 				{
@@ -244,10 +244,10 @@ int moveWhiteBishop(int board[8][8], int x, int y)
 							printf("There are things in between\n");
 							return 0;
 						}
-						board[x][y] = EMPTY;
-						board[newX][newY]= BISHOP;
-						return 1;
 					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= BISHOP;
+					return 1;
 				}
 				else
 				{	
