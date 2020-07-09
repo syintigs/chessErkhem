@@ -161,7 +161,6 @@ void printBoard(int board[8][8])
 
 int main(void)
 {
-	int cycle = 1;
 	int chessBoard[8][8] = {
 		{ ROOKB, HORSEB, BISHOPB, QUEENB, KINGB, BISHOPB, HORSEB, ROOKB},
 		{ PAWNB,PAWNB,PAWNB,PAWNB,PAWNB,PAWNB,PAWNB,PAWNB},
@@ -172,14 +171,17 @@ int main(void)
 		{ PAWN,PAWN,PAWN,PAWN,PAWN,PAWN,PAWN,PAWN},
 		{ ROOK, HORSE, BISHOP, QUEEN, KING, BISHOP, HORSE, ROOK}
 	};
+	int cycle = 1;
 	while(1)
 	{
 		printBoard(chessBoard);
 		if(cycle==1)
+		{
 			if(chooseWhiteUnit(chessBoard))
 			{
 				cycle=0;
 			}	
+		}
 		else if(cycle==0)
 		{
 			if(chooseBlackUnit(chessBoard))
@@ -188,8 +190,5 @@ int main(void)
 			}
 		}	
 	}
-
-	
-		
 	return 0;
 }	
