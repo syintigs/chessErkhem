@@ -24,11 +24,24 @@
  *151 Queen
  *170 King
  */
-int checkPawn(int board[8][8],int x, int y, int enemyX, int enemyY)
+int checkWhitePawn(int board[8][8],int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
 	enemyY--;
 	if(enemyX==x-1 &&
+	(enemyY==y-1||enemyY==y+1))
+	{
+		return 1;
+	}
+	return 0;
+
+}
+
+int checkBlackPawn(int board[8][8],int x, int y, int enemyX, int enemyY)
+{
+	enemyX--;
+	enemyY--;
+	if(enemyX==x+1 &&
 	(enemyY==y-1||enemyY==y+1))
 	{
 		return 1;
