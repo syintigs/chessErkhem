@@ -307,6 +307,185 @@ int moveBlackHorse(int board[8][8], int x, int y)
 	}
 }
 
+int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
+{
+	switch(board[newX][newY])
+	{
+		case QUEEN: 
+		case PAWN:
+	       	case HORSE:
+	       	case BISHOP:
+	       	case ROOK:
+	       	case EMPTY:
+			if(newY==y)
+			{
+				int xChange = abs(newX-x);
+				if(newX>x)
+				{
+					for(int i = 1; i<xChange; i++)
+					{
+						if(board[newX-i][newY] < EMPTY)  //Anything other than EMPTY
+						{
+							printf("There are things in the way\n");
+							return 0;
+						}
+					}
+					board[x][y] =EMPTY;
+					board[newX][newY] = QUEENB;
+					return 1;
+				}
+				else if(x>newX)
+				{
+					for(int i = 1; i<xChange; i++)
+					{
+						if(board[newX+i][newY] <EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in the way\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY] = QUEENB;
+					return 1;
+				}	
+				else
+				{
+					return 0;
+				}
+			}
+			else if(newX==x)
+			{
+				int yChange = abs(newY-y);
+				if(newY>y)
+				{
+					for(int i = 1; i<yChange; i++)
+					{
+						if(board[newX][newY-i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in the way\n");
+							return 0;
+						}
+					}
+					board[x][y] =EMPTY;
+					board[newX][newY]=QUEENB;
+					return 1;
+				}	
+				else if(y>newY)
+				{
+					for(int i = 1 ; i<yChange; i++)
+					{
+						if(board[newX][newY+i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in the way\n");
+							return 0;
+						}
+					}
+					board[x][y] =EMPTY;
+					board[newX][newY]=QUEENB;
+					return 1;
+				}
+				else 
+				{
+					printf("error #4");
+				}
+			}
+			else
+			{
+				printf("not a queen movement");
+				return 0;
+			}	
+			break;
+		default:
+			printf("Not inside board or friendly unit \n");
+			return 0;
+	}
+}
+
+int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
+{
+	switch(board[newX][newY])
+	{
+		case QUEEN:
+	       	case PAWN:
+	       	case HORSE:
+	       	case BISHOP:
+	       	case ROOK:
+	       	case EMPTY:
+			if(abs(newX-x)==abs(newY-y))
+			{
+				int change = abs(newX-x);
+				if(newX>x && newY>y)
+				{
+					for(int i = 1; i<change; i++)
+					{
+   						if(board[newX-i][newY-i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= QUEENB;
+					return 1;
+				}
+				else if(newX>x && y>newY)
+				{
+					for(int i = 1; i<change; i++)
+					{
+						if(board[newX-i][newY+i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= QUEENB;
+					return 1;
+				}
+				else if(x>newX && newY>y)
+				{
+					for(int i = 1; i<change; i++)
+					{
+						if(board[newX+i][newY-i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= QUEENB;
+					return 1;
+				}
+				else if(x>newX && y>newY)
+				{
+					for(int i = 1; i<change; i++)
+					{
+						if(board[newX+i][newY+i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= QUEENB;
+					return 1;
+				}
+				else
+				{	
+					printf("error #3");
+				}
+			}
+			else
+			{
+				printf("Not a queen  movement\n");
+				return 0;
+			}
+			break;
+		default:
+			printf("Not inside board or friendly unit\n");
+			return 0;
+ 	}
+}
 int moveBlackQueen(int board[8][8], int x, int y)
 {
 	int newX;

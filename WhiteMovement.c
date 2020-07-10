@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "MovementAccessibility.h"
 #define EMPTY 9
 #define PAWN 1
 #define HORSE 2
@@ -306,6 +307,185 @@ int moveWhiteHorse(int board[8][8], int x, int y)
 	}
 }
 
+int moveWhiteQueenRook(int board[8][8], int x, int y, int newX, int newY)
+{
+	switch(board[newX][newY])
+	{
+		case QUEENB: 
+		case PAWNB:
+	       	case HORSEB:
+	       	case BISHOPB:
+	       	case ROOKB:
+	       	case EMPTY:
+			if(newY==y)
+			{
+				int xChange = abs(newX-x);
+				if(newX>x)
+				{
+					for(int i = 1; i<xChange; i++)
+					{
+						if(board[newX-i][newY] < EMPTY)  //Anything other than EMPTY
+						{
+							printf("There are things in the way\n");
+							return 0;
+						}
+					}
+					board[x][y] =EMPTY;
+					board[newX][newY] = QUEEN;
+					return 1;
+				}
+				else if(x>newX)
+				{
+					for(int i = 1; i<xChange; i++)
+					{
+						if(board[newX+i][newY] <EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in the way\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY] = QUEEN;
+					return 1;
+				}	
+				else
+				{
+					return 0;
+				}
+			}
+			else if(newX==x)
+			{
+				int yChange = abs(newY-y);
+				if(newY>y)
+				{
+					for(int i = 1; i<yChange; i++)
+					{
+						if(board[newX][newY-i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in the way\n");
+							return 0;
+						}
+					}
+					board[x][y] =EMPTY;
+					board[newX][newY]=QUEEN;
+					return 1;
+				}	
+				else if(y>newY)
+				{
+					for(int i = 1 ; i<yChange; i++)
+					{
+						if(board[newX][newY+i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in the way\n");
+							return 0;
+						}
+					}
+					board[x][y] =EMPTY;
+					board[newX][newY]=QUEEN;
+					return 1;
+				}
+				else 
+				{
+					printf("error #4");
+				}
+			}
+			else
+			{
+				printf("not a queen movement");
+				return 0;
+			}	
+			break;
+		default:
+			printf("Not inside board or friendly unit \n");
+			return 0;
+	}
+}
+
+int moveWhiteQueenBishop(int board[8][8], int x, int y, int newX, int newY)
+{
+	switch(board[newX][newY])
+	{
+		case QUEENB:
+	       	case PAWNB:
+	       	case HORSEB:
+	       	case BISHOPB:
+	       	case ROOKB:
+	       	case EMPTY:
+			if(abs(newX-x)==abs(newY-y))
+			{
+				int change = abs(newX-x);
+				if(newX>x && newY>y)
+				{
+					for(int i = 1; i<change; i++)
+					{
+   						if(board[newX-i][newY-i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= QUEEN;
+					return 1;
+				}
+				else if(newX>x && y>newY)
+				{
+					for(int i = 1; i<change; i++)
+					{
+						if(board[newX-i][newY+i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= QUEEN;
+					return 1;
+				}
+				else if(x>newX && newY>y)
+				{
+					for(int i = 1; i<change; i++)
+					{
+						if(board[newX+i][newY-i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= QUEEN;
+					return 1;
+				}
+				else if(x>newX && y>newY)
+				{
+					for(int i = 1; i<change; i++)
+					{
+						if(board[newX+i][newY+i]<EMPTY) //Anything other than EMPTY
+						{
+							printf("There are things in between\n");
+							return 0;
+						}
+					}
+					board[x][y] = EMPTY;
+					board[newX][newY]= QUEEN;
+					return 1;
+				}
+				else
+				{	
+					printf("error #3");
+				}
+			}
+			else
+			{
+				printf("Not a queen movement\n");
+				return 0;
+			}
+			break;
+		default:
+			printf("Not inside board or friendly unit\n");
+			return 0;
+ 	}
+}
 int moveWhiteQueen(int board[8][8], int x, int y)
 {
 	int newX;
@@ -314,11 +494,11 @@ int moveWhiteQueen(int board[8][8], int x, int y)
 	scanf("%d",&newY);
 	printf("new Y:");
 	scanf("%d", &newX);
-	if(moveWhiteRook(board,x,y))
+	if(checkRook(board,x,y,newX,newY))
 	{
 		return 1;
 	}
-	else if(moveWhiteBishop(board,x,y))
+	else if(checkBishop(board,x,y,newX,newY))
 	{
 		return 1;
 	}
@@ -336,7 +516,7 @@ int moveWhiteKing(int board[8][8], int x, int y)
 	printf("Choose new x:");
 	scanf("%d", &newY);
 	printf("Choose new y:");
-	scanf("%d",newX);
+	scanf("%d",&newX);
 	newX--;
 	newY--;
 	switch(board[newX][newY])
@@ -350,11 +530,6 @@ int moveWhiteKing(int board[8][8], int x, int y)
 			if((newX==x) && (newY==y+1 || newY==y-1)
 			||(newX==x+1 || newX==x-1) && (newY==y || newY==y+1 || newY==y-1))
 			{
-				/* if(check(board,newX,newY)
-				 {
-					printf("You'll be checked\n");
-					return 0;
-				*/
 				board[x][y]=EMPTY;
 				board[newX][newY]=KING;
 				return 1;
@@ -366,3 +541,8 @@ int moveWhiteKing(int board[8][8], int x, int y)
 			return 0;	
 	}
 }
+				/* if(check(board,newX,newY)
+				 {
+					printf("You'll be checked\n");
+					return 0;
+				*/
