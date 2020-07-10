@@ -391,7 +391,7 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 			}
 			else
 			{
-				printf("not a queen movement");
+				printf("not a valid queen movement\n");
 				return 0;
 			}	
 			break;
@@ -477,7 +477,7 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 			}
 			else
 			{
-				printf("Not a queen  movement\n");
+				printf("Not a valid queen movement\n");
 				return 0;
 			}
 			break;
@@ -494,17 +494,23 @@ int moveBlackQueen(int board[8][8], int x, int y)
 	scanf("%d",&newY);
 	printf("new Y:");
 	scanf("%d",&newX);
-	if(moveBlackRook(board,x,y))
+	newX--;
+	newY--;
+	if(newX==x && newY==y)
+	{
+		printf("You're already here\n");
+		return 0;
+	}
+	if(moveBlackQueenBishop(board,x,y, newX, newY))
 	{
 		return 1;
 	}
-	else if(moveBlackBishop(board,x,y))
+	else if(moveBlackQueenRook(board,x,y, newX, newY))
 	{
 		return 1;
 	}
 	else
 	{
-		printf("Wrong input\n");
 		return 0;
 	}
 }
