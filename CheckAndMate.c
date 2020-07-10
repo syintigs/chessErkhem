@@ -157,6 +157,38 @@ int checkBlackRookAndQueen(int board[8][8], int x, int y, int enemyX, int enemyY
        return 0;
 }
 
+int checkBlackBishopAndQueen(int board[8][8] , int x, int y, int enemyX, int enemyY)
+{
+	for(int xChange=x-1,yChange=y+1; xChange<8 && yChange<8 ; xChange--, yChange++)//Negative X, Positive Y. Top Right
+	{
+		if(board[xChange][yChange]==BISHOP)
+		{
+			if(checkBishop(board, x, y, enemyX, enemyY) return 1;
+		}
+		else if(board[xChange][yChange]==QUEEN)
+		{
+			if(checkQueen(board,x,y,enemyX,enemyY) return 1;
+		}
+	}
+	for(int xChange=x-1, yChange=y-1; xChange>=0 && yChange>=0; xChange--, yChange--)//Negative X, Negative Y. Top Left
+	{
+		if(board[xChange][yChange]==BISHOP)
+		{
+			if(checkBishop(board, x, y, enemyX, enemyY) return 1;
+		}
+		else if(board[xChange][yChange]==QUEEN)
+		{
+			if(checkBishop(board, x, y, enemyX, enemyY)return 1;
+		}
+	}
+	for(int xChange=x+1, yChange=y+1; xChange>8 && yChange>8; xChange++, yChange++)//Positive X, Positive Y. Bottom Right
+	{
+		if(board[xChange][yChange]==BISHOP)
+		{
+			checkBishop(
+		}
+	}
+}
 
 int checkBlack(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
