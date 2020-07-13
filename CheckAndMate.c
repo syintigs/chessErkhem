@@ -205,11 +205,24 @@ int checkBlackBishopAndQueen(int board[8][8] , int x, int y)
 		}
 	}
 }
+int checkBlackHorse(int board[8][8], int x, int y)
+{
+	if(board[x+1][y+2] ==HORSE) return 1;
+	else if(board[x+1][y-2] ==HORSE) return 1;
+	else if(board[x-1][y+2] ==HORSE) return 1;
+	else if(board[x-1][y-2] ==HORSE) return 1;
+	else if(board[x+2][y+1] ==HORSE) return 1;
+	else if(board[x+2][y-1] ==HORSE) return 1;
+	else if(board[x-2][y+1] ==HORSE) return 1;
+	else if(board[x-2][y-1] ==HORSE) return 1;
+	else return 0;
+}
 
 int checkBlack(int board[8][8], int x, int y)
 {
 	checkBlackRookAndQueen(board, x, y);
 	checkBlackBishopAndQueen(board, x, y);	
+	checkBlackHorse(board, x, y);
 }
 
 int checkMateBlack(int board[8][8], int x, int y)

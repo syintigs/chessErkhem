@@ -161,6 +161,7 @@ int checkBishop(int board[8][8], int x, int y, int enemyX, int enemyY)
 	return 0;
 }
 
+/*
 int checkHorse(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
@@ -174,8 +175,10 @@ int checkHorse(int board[8][8], int x, int y, int enemyX, int enemyY)
 		board[enemyX][enemyY]=HORSE;
 		return 1;
 	}
+	if(
 	return 0;
 }
+	*/
 
 int checkQueen(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
