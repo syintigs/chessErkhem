@@ -128,7 +128,7 @@ int selectionBlackCheck(int board[8][8], int x, int y, int enemyX, int enemyY)
 	}
 }
 
-int checkBlackRookAndQueen(int board[8][8], int x, int y)
+int checkBlackLateral(int board[8][8], int x, int y)
 {
        for(int enemyX = 0; enemyX<8 ; enemyX++)
        {
@@ -157,7 +157,7 @@ int checkBlackRookAndQueen(int board[8][8], int x, int y)
        return 0;
 }
 
-int checkBlackBishopAndQueen(int board[8][8] , int x, int y)
+int checkBlackDiagonal(int board[8][8] , int x, int y)
 {
 	int change;
 	for(change = 1; (x-change)>=0 && (y+change)<8 ; change++)//Negative X, Positive Y. Top Right
@@ -205,7 +205,7 @@ int checkBlackBishopAndQueen(int board[8][8] , int x, int y)
 		}
 	}
 }
-int checkBlackHorse(int board[8][8], int x, int y)
+int checkEnemyWhiteHorse(int board[8][8], int x, int y)
 {
 	if(board[x+1][y+2] ==HORSE) return 1;
 	else if(board[x+1][y-2] ==HORSE) return 1;
@@ -218,11 +218,24 @@ int checkBlackHorse(int board[8][8], int x, int y)
 	else return 0;
 }
 
+int checkBlackSurrounding(int board[8][8] , int x, y) // Checks the 8 spaces around the king
+{
+	if(board[x+1][y+1]==KING) return 1;
+	else if(board[x+1][y]==KING) return 1;
+	else if(board[x+1][y-1]==KING) return 1;
+	else if(board[x][y+1]==KING) return 1;
+	else if(board[x][y-1]==KING) return 1;
+	else if(board[x-1][y+1]==KING) return 1;
+	else if(board[x-1][y]==KING) return 1;
+	else if(board[x-1][y-1]==KING) return 1;
+
+
+}
 int checkBlack(int board[8][8], int x, int y)
 {
-	checkBlackRookAndQueen(board, x, y);
-	checkBlackBishopAndQueen(board, x, y);	
-	checkBlackHorse(board, x, y);
+	checkBlackLateral(board, x, y);		// Enemy White Rook and Queen
+	checkBlackDiagonal(board, x, y);	// Enemy White Bishop and Queen
+	checkEnemyWhiteHorse(board, x, y);	
 }
 
 int checkMateBlack(int board[8][8], int x, int y)
