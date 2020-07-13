@@ -270,5 +270,4 @@ int checkMateWhite(int board[8][8], int x, int y)
 	return 0;
 }
 
-int checkM
 

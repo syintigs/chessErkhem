@@ -1,4 +1,10 @@
-int checkWhite(int board[8][8], int x, int y, int enemyX, int enemyY);
-int checkBlack(int board[8][8], int x, int y, int enemyX, int enemyY);
+int checkWhite(int board[8][8], int x, int y);
+int checkBlack(int board[8][8], int x, int y);
 int checkMateWhite(int board[8][8], int x, int y);
 int checkMateBlack(int board[8][8], int x, int y);
+int selectionWhiteCheck(int board[8][8], int x, int y, int enemyX, int enemyY);
+int selectionBlackCheck(int board[9][8], int x, int y, int enemyX, int enemyY);
+int checkBlackLateral(int board[8][8], int x, int y);
+int checkBlackDiagonal(int board[8][8] , int x, int y);
+int checkEnemyWhiteHorse(int board[8][8], int x, int y);
+int checkBlackSurrounding(int board[8][8] , int x, y);
