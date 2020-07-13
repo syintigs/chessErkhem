@@ -128,84 +128,101 @@ int selectionBlackCheck(int board[8][8], int x, int y, int enemyX, int enemyY)
 	}
 }
 
-int checkBlackRookAndQueen(int board[8][8], int x, int y, int enemyX, int enemyY)
+int checkBlackRookAndQueen(int board[8][8], int x, int y)
 {
-       for(int rowX = 0; rowX<8 ; rowX++)
+       for(int enemyX = 0; enemyX<8 ; enemyX++)
        {
-		if(rowX==x) continue;
-		if(board[rowX][y] == ROOK)
+		if(enemyX==x) continue;
+		if(board[enemyX][y] == ROOK)
 		{
-			if(checkRook(board,x, y, enemyX, enemyY) return 1;
+			if(checkRook(board,x, y, enemyX, y) return 1;
 		}	
-		else if(board[rowX][y] == QUEEN)
+		else if(board[enemyX][y] == QUEEN)
 		{
-			if(checkQueen(board, x, y, enemyX, enemyY) return 1;
+			if(checkQueen(board, x, y, enemyX, y) return 1;
 		}	
        }
-       for(int colY = 0; colY<8; colY++)
+       for(int enemyY = 0; enemyY<8; enemyY++)
        {
-		if(colY=y) continue;
-		if(board[x][colY]==ROOK)
+		if(enemyY=y) continue;
+		if(board[x][enemyY]==ROOK)
 		{
-			if(checkRook(board ,x ,y ,enemyX, enemyY) return 1;
+			if(checkRook(board ,x ,y ,x, enemyY) return 1;
 		}
-		else if(board[x][colY] ==QUEEN)
+		else if(board[x][enemyY] ==QUEEN)
 		{
-			if(checkQueen(board, x, y, enemyX, enemyY) return 1;
+			if(checkQueen(board, x, y, x, enemyY) return 1;
 		}
        }
        return 0;
 }
 
-int checkBlackBishopAndQueen(int board[8][8] , int x, int y, int enemyX, int enemyY)
+int checkBlackBishopAndQueen(int board[8][8] , int x, int y)
 {
-	for(int xChange=x-1,yChange=y+1; xChange<8 && yChange<8 ; xChange--, yChange++)//Negative X, Positive Y. Top Right
+	int change;
+	for(change = 1; (x-change)>=0 && (y+change)<8 ; change++)//Negative X, Positive Y. Top Right
 	{
-		if(board[xChange][yChange]==BISHOP)
+		if(board[x-change][y+change]==BISHOP)
 		{
-			if(checkBishop(board, x, y, enemyX, enemyY) return 1;
+			if(checkBishop(board, x, y, x-change, y+change) return 1;
 		}
-		else if(board[xChange][yChange]==QUEEN)
+		else if(board[x-change][y+change]==QUEEN)
 		{
-			if(checkQueen(board,x,y,enemyX,enemyY) return 1;
+			if(checkQueen(board,x,y,x-change, y+change) return 1;
 		}
 	}
-	for(int xChange=x-1, yChange=y-1; xChange>=0 && yChange>=0; xChange--, yChange--)//Negative X, Negative Y. Top Left
+	for(change = 1; (x-change)>=0 && (y-change)>=0; change--)//Negative X, Negative Y. Top Left
 	{
-		if(board[xChange][yChange]==BISHOP)
+		if(board[x-change][y-change]==BISHOP)
 		{
-			if(checkBishop(board, x, y, enemyX, enemyY) return 1;
+			if(checkBishop(board, x, y, x-change, y-change) return 1;
 		}
-		else if(board[xChange][yChange]==QUEEN)
+		else if(board[x-change][y-change]==QUEEN)
 		{
-			if(checkBishop(board, x, y, enemyX, enemyY)return 1;
+			if(checkQueen(board, x, y, x-change, y-change)return 1;
 		}
 	}
-	for(int xChange=x+1, yChange=y+1; xChange>8 && yChange>8; xChange++, yChange++)//Positive X, Positive Y. Bottom Right
+	for(change = 1 ; (x+change)>8 && (y+change)>8; change++)//Positive X, Positive Y. Bottom Right
 	{
-		if(board[xChange][yChange]==BISHOP)
+		if(board[x+change][y+change]==BISHOP)
 		{
-			checkBishop(
+			if(checkBishop(board, x, y, x+change, y+change)) return 1;
+		}
+		else if(board[x+change][y+change] == QUEEN)
+		{
+			if(checkQueen(board, x, y, x+change, y+change)) return 1;
+		}
+	}
+	for(change = 1; (x+change)>8 && (y-change) <=0 ; change++) //Positive X, Negative Y. Bottom Left
+	{
+		if(board[x+change][y-change] == BISHOP)
+		{
+			if(checkBishop(board, x, y, x+change, y-change)) return 1;
+		}
+		else if(board[x+change][y-change] == QUEEN)
+		{
+			if(checkBishop(board, x, y, x+change, y-change)) return 1;
 		}
 	}
 }
 
-int checkBlack(int board[8][8], int x, int y, int enemyX, int enemyY)
+int checkBlack(int board[8][8], int x, int y)
 {
-	checkBlackRookAndQueen(board, x, y, enemyX, enemyY);
-	checkBlackBishopAndQueen(board, x, y, enemyX, enemyY);	
+	checkBlackRookAndQueen(board, x, y);
+	checkBlackBishopAndQueen(board, x, y);	
 }
 
 int checkMateBlack(int board[8][8], int x, int y)
 {
-	if((checkBlack(board,x,y,x+1,y) || (board[x+1][y]<EMPTY && board[x+1][y]>0))
-	||(checkBlack(board,x,y,x-1,y) || (board[x-1][y]<EMPTY && board[x-1][y]>0))
-	||(checkBlack(board,x,y,x+1,y+1) || (board[x+1][y+1]<EMPTY && board[x+1][y+1]>0))
-	||(checkBlack(board,x,y,x-1,y+1) || (board[x-1][y+1]<EMPTY && board[x-1][y+1]>0))
-	||(checkBlack(board,x,y,x,y+1) || (board[x][y+1]<EMPTY && board[x][y+1]>0))
-	||(checkBlack(board,x,y,x+1,y-1) || (board[x+1][y-1]<EMPTY && board[x+1][y-1]>0))
-	||(checkBlack(board,x,y,x-1,y-1) || (board[x-1][y]<EMPTY && board[x-1][y]>0))
-	||(checkBlack(board,x,y,x,y-1) || (board[x][y-1]<EMPTY && board[x][y-1]>0)))	 
+	if((checkBlack(board,x,y))
+	||((checkBlack(board,x+1,y) || (board[x+1][y]!=EMPTY && board[x+1][y]<0))
+	||(checkBlack(board,x-1,y) || (board[x-1][y]!=EMPTY && board[x-1][y]<0))
+	||(checkBlack(board,x+1,y+1) || (board[x+1][y+1]!=EMPTY && board[x+1][y+1]<0))
+	||(checkBlack(board,x-1,y+1) || (board[x-1][y+1]!=EMPTY && board[x-1][y+1]<0))
+	||(checkBlack(board,x,y+1) || (board[x][y+1]!=EMPTY && board[x][y+1]<0))
+	||(checkBlack(board,x+1,y-1) || (board[x+1][y-1]!=EMPTY && board[x+1][y-1]<0))
+	||(checkBlack(board,x-1,y-1) || (board[x-1][y]!=EMPTY && board[x-1][y]<0))
+	||(checkBlack(board,x,y-1) || (board[x][y-1]!=EMPTY && board[x][y-1]<0)))	 
 	{
 		return 1;
 	}
@@ -213,7 +230,7 @@ int checkMateBlack(int board[8][8], int x, int y)
 }
 int checkMateWhite(int board[8][8], int x, int y)
 {
-	if((checkWhite(board,x,y,x+1,y) || (board[x+1][y]<EMPTY && board[x+1][y]>0))
+	if((checkWhite(board,x,y,x+1,y) || (board[x+1][y]<EMPTY && board[x+1][y]>))
 	||(checkWhite(board,x,y,x-1,y) || (board[x-1][y]<EMPTY && board[x-1][y]>0))
 	||(checkWhite(board,x,y,x+1,y+1) || (board[x+1][y+1]<EMPTY && board[x+1][y+1]>0))
 	||(checkWhite(board,x,y,x-1,y+1) || (board[x-1][y+1]<EMPTY && board[x-1][y+1]>0))
