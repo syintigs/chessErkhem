@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "MovementAccessibility.h"
+#include "CheckAndMate.h"
 #define EMPTY 9
 #define PAWN 1
 #define HORSE 2

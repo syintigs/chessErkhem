@@ -3,7 +3,6 @@
 #include <stdbool.h>
 #include "WhiteMovement.h"
 #include "BlackMovement.h"
-#include "CheckAndMate.h"
 #define EMPTY 9
 #define PAWN 1
 #define HORSE 2
@@ -158,7 +157,6 @@ void printBoard(int board[8][8])
 
 //int checkBoardForCheckmate(int board[8][8]
 
-
 int main(void)
 {
 	int chessBoard[8][8] = {
@@ -180,6 +178,7 @@ int main(void)
 			if(chooseWhiteUnit(chessBoard))
 			{
 				cycle=0;
+				
 			}	
 		}
 		else if(cycle==0)
@@ -187,6 +186,7 @@ int main(void)
 			if(chooseBlackUnit(chessBoard))
 			{
 				cycle =1;
+				
 			}
 		}	
 	}

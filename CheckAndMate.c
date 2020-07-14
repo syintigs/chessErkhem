@@ -220,22 +220,26 @@ int checkEnemyWhiteHorse(int board[8][8], int x, int y)
 
 int checkBlackSurrounding(int board[8][8] , int x, y) // Checks the 8 spaces around the king
 {
-	if(board[x+1][y+1]==KING) return 1;
-	else if(board[x+1][y]==KING) return 1;
-	else if(board[x+1][y-1]==KING) return 1;
-	else if(board[x][y+1]==KING) return 1;
-	else if(board[x][y-1]==KING) return 1;
-	else if(board[x-1][y+1]==KING) return 1;
-	else if(board[x-1][y]==KING) return 1;
-	else if(board[x-1][y-1]==KING) return 1;
-
-
+	if ((board[x+1][y+1]==KING) 
+	|| (board[x+1][y]==KING) 
+  	|| (board[x+1][y-1]==KING) 
+	|| (board[x][y+1]==KING) 
+	|| (board[x][y-1]==KING)
+	|| (board[x-1][y+1]==KING)
+	|| (board[x-1][y]==KING) 
+	|| (board[x-1][y-1]==KING)) return 1;
 }
 int checkBlack(int board[8][8], int x, int y)
 {
-	checkBlackLateral(board, x, y);		// Enemy White Rook and Queen
-	checkBlackDiagonal(board, x, y);	// Enemy White Bishop and Queen
-	checkEnemyWhiteHorse(board, x, y);	
+	if(checkBlackLateral(board, x, y) // Enemy White Rook and Queen
+	|| checkBlackDiagonal(board, x , y) // Enemy White Bishop and Queen
+	|| checkEnemyWhiteHorse(board, x, y) //Enemy White Horse
+       	|| checkBlackSurrounding(board, x, y)) //Enemy White King and Pawn	
+	{
+		printf("Black will be checked if he makes that move\n");
+ 		return 1;
+	}
+	
 }
 
 int checkMateBlack(int board[8][8], int x, int y)
@@ -250,6 +254,7 @@ int checkMateBlack(int board[8][8], int x, int y)
 	||(checkBlack(board,x-1,y-1) || (board[x-1][y]!=EMPTY && board[x-1][y]<0))
 	||(checkBlack(board,x,y-1) || (board[x][y-1]!=EMPTY && board[x][y-1]<0)))	 
 	{
+		printf("Black is checkmated\n");
 		return 1;
 	}
 	return 0;	

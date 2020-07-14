@@ -24,6 +24,22 @@
  *151 Black Queen
  *170 Black King
  */
+struct trackBlackKing(int newX, int newY)
+{
+	if(newX==-1 || newY==-1)
+	{
+		return blackKingPos;
+	}	
+	struct template
+	{
+		int x;
+		int y;
+	}
+	static struct template blackKingPos;
+	blackKingPos.x = newX;
+	blackKingPos.y = newY;
+	return blackKingPos;
+}
 int moveBlackPawn(int board[8][8], int x, int y)
 {
 	int newX;
@@ -543,6 +559,7 @@ int moveBlackKing(int board[8][8], int x, int y)
 				*/
 				board[x][y]=EMPTY;
 				board[newX][newY]=KINGB;
+				trackBlackKing(newX, newY);
 				return 1;
 			}
 			printf("Not a king movement\n");
