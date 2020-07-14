@@ -24,34 +24,34 @@
  *151 Queen
  *170 King
  */
-int checkWhitePawn(int board[8][8],int x, int y, int enemyX, int enemyY)
+bool checkWhitePawn(int board[8][8],int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
 	enemyY--;
 	if(enemyX==x-1 &&
 	(enemyY==y-1||enemyY==y+1))
 	{
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 
 }
 
-int checkBlackPawn(int board[8][8],int x, int y, int enemyX, int enemyY)
+bool checkBlackPawn(int board[8][8],int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
 	enemyY--;
 	if(enemyX==x+1 &&
 	(enemyY==y-1||enemyY==y+1))
 	{
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 
 }
 		
 
-int checkRook(int board[8][8], int x, int y, int enemyX, int enemyY)
+bool checkRook(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
 	enemyY--;
@@ -64,7 +64,7 @@ int checkRook(int board[8][8], int x, int y, int enemyX, int enemyY)
 			{
 				if(board[enemyX-i][enemyY]<EMPTY) //Anything other than EMPTY
 				{
-					return 0;
+					return false;
 				}
 			}
 		}	
@@ -74,11 +74,11 @@ int checkRook(int board[8][8], int x, int y, int enemyX, int enemyY)
 			{
 				if(board[enemyX+1][enemyY]<EMPTY) //Anything other than EMPTY
 				{
-					return 0;
+					return false;
 				}
 			}
 		}
-		return 1;
+		return true;
 	}
 	else if(enemyX ==x)
 	{
@@ -89,7 +89,7 @@ int checkRook(int board[8][8], int x, int y, int enemyX, int enemyY)
 			{
 				if(board[enemyX][enemyY-i]<EMPTY) //Anything other than EMPTY
 				{
-					return 0;
+					return false;
 				}
 			}
 		}	
@@ -99,17 +99,17 @@ int checkRook(int board[8][8], int x, int y, int enemyX, int enemyY)
 			{
 				if(board[enemyX][enemyY+i]<EMPTY) //Anything other than EMPTY
 				{
-					return 0;
+					return false;
 				}
 			}
 		}
-		return 1;
+		return true;
 				
 	}
-	return 0;
+	return false;
 }
 
-int checkBishop(int board[8][8], int x, int y, int enemyX, int enemyY)
+bool checkBishop(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
 	enemyY--;
@@ -122,7 +122,7 @@ int checkBishop(int board[8][8], int x, int y, int enemyX, int enemyY)
 			{
 				if(board[enemyX-i][enemyY-i]<EMPTY) //true if Anything other than EMPTY
 				{
-					return 0;
+					return false;
 				}
 			}
 		}	
@@ -132,7 +132,7 @@ int checkBishop(int board[8][8], int x, int y, int enemyX, int enemyY)
 			{
 				if(board[enemyX-i][enemyY+i]<EMPTY) //true if Anything other than EMPTY
 				{
-					return 0;
+					return false;
 				}
 			}
 		}
@@ -142,7 +142,7 @@ int checkBishop(int board[8][8], int x, int y, int enemyX, int enemyY)
 			{
 				if(board[enemyX+i][enemyY-i]<EMPTY) //true if anyhthing other than EMPTY
 				{
-					return 0;
+					return false;
 				}
 			}
 		}
@@ -152,17 +152,17 @@ int checkBishop(int board[8][8], int x, int y, int enemyX, int enemyY)
 			{
 				if(board[enemyX+i][enemyY+i]<EMPTY) //true if Anything other than EMPTY
 				{
-					return 0;
+					return false;
 				}
 			}
 		}
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 /*
-int checkHorse(int board[8][8], int x, int y, int enemyX, int enemyY)
+bool checkHorse(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
 	enemyY--;
@@ -173,32 +173,32 @@ int checkHorse(int board[8][8], int x, int y, int enemyX, int enemyY)
 	{
 		board[x][y]=EMPTY;
 		board[enemyX][enemyY]=HORSE;
-		return 1;
+		return true;
 	}
 	if(
-	return 0;
+	return false;
 }
 	*/
 
-int checkQueen(int board[8][8], int x, int y, int enemyX, int enemyY)
+bool checkQueen(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
 	enemyY--;
 	if(checkRook(board, x, y, enemyX, enemyY) || checkBishop(board,x,y, enemyX, enemyY))
 	{
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-int checkKing(int board[8][8], int x, int y, int enemyX, int enemyY)
+bool checkKing(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
 	enemyX--;
 	enemyY--;
 	if((enemyX==x) && (enemyY==y+1 || enemyY==y-1)
 	||(enemyX==x+1 || enemyX==x-1) && (enemyY==y || enemyY==y+1 || enemyY==y-1))
 	{
-		return 1;
+		return true;
 	}
-	return 0;	
+	return false;	
 }
