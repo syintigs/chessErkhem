@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include "WhiteMovement.h"
 #include "BlackMovement.h"
+#include "Extern.h"
+
 #define EMPTY 9
 #define PAWN 1
 #define HORSE 2
@@ -21,6 +23,11 @@
 #define RED "\x1b[31m"
 #define BLUE  "\x1b[34m"
 #define COLORRESET "\x1b[0m"
+
+int Black_King_X = 0;
+int Black_King_Y = 4;
+int White_King_X = 0;
+int White_King_Y = 4;
 
 int chooseWhiteUnit(int board[8][8])
 {
@@ -169,6 +176,7 @@ int main(void)
 		{ PAWN,PAWN,PAWN,PAWN,PAWN,PAWN,PAWN,PAWN},
 		{ ROOK, HORSE, BISHOP, QUEEN, KING, BISHOP, HORSE, ROOK}
 	};
+	trackBlackKing(0,4);
 	int cycle = 1;
 	while(1)
 	{

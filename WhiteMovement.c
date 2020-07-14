@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "CheckAndMate.h"
+#include "Extern.h"
 #define EMPTY 9
 #define PAWN 1
 #define HORSE 2

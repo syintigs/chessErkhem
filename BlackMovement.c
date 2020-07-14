@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "CheckAndMate.h"
+#include "Extern.h"
+
 #define EMPTY 9
 #define PAWN 1
 #define HORSE 2
@@ -24,22 +26,6 @@
  *151 Black Queen
  *170 Black King
  */
-struct trackBlackKing(int newX, int newY)
-{
-	if(newX==-1 || newY==-1)
-	{
-		return blackKingPos;
-	}	
-	struct template
-	{
-		int x;
-		int y;
-	}
-	static struct template blackKingPos;
-	blackKingPos.x = newX;
-	blackKingPos.y = newY;
-	return blackKingPos;
-}
 int moveBlackPawn(int board[8][8], int x, int y)
 {
 	int newX;
@@ -60,6 +46,11 @@ int moveBlackPawn(int board[8][8], int x, int y)
 			if(newX==x+1&&
 			(newY==y-1||newY==y+1))
 			{
+				if(checkBlack(board, Black_King_X, Black_King_Y))
+				{	
+					printf("Black King will be checked\n");	
+					return 0;
+				}
 				board[x][y]= EMPTY;
 				board[newX][newY] = PAWNB;
 				return 1;
@@ -67,6 +58,11 @@ int moveBlackPawn(int board[8][8], int x, int y)
 	       	case EMPTY:
 			if(newX==x+1 && newY==y)
 			{
+				if(checkBlack(board,Black_King_X,Black_King_Y))
+				{	
+					printf("You'll be checked\n");
+					return 0;
+				}	
 				board[x][y]=EMPTY;
 				board[newX][newY]=PAWNB;
 				return 1;
@@ -112,6 +108,11 @@ int moveBlackRook(int board[8][8], int x, int y)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] =EMPTY;
 					board[newX][newY] = ROOKB;
 					return 1;
@@ -126,6 +127,11 @@ int moveBlackRook(int board[8][8], int x, int y)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY] = ROOKB;
 					return 1;
@@ -148,6 +154,11 @@ int moveBlackRook(int board[8][8], int x, int y)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] =EMPTY;
 					board[newX][newY]=ROOKB;
 					return 1;
@@ -162,6 +173,11 @@ int moveBlackRook(int board[8][8], int x, int y)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] =EMPTY;
 					board[newX][newY]=ROOKB;
 					return 1;
@@ -219,6 +235,11 @@ int moveBlackBishop(int board[8][8], int x, int y)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= BISHOPB;
 					return 1;
@@ -233,6 +254,11 @@ int moveBlackBishop(int board[8][8], int x, int y)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= BISHOPB;
 					return 1;
@@ -247,6 +273,11 @@ int moveBlackBishop(int board[8][8], int x, int y)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= BISHOPB;
 					return 1;
@@ -261,6 +292,11 @@ int moveBlackBishop(int board[8][8], int x, int y)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= BISHOPB;
 					return 1;
@@ -311,6 +347,11 @@ int moveBlackHorse(int board[8][8], int x, int y)
 			 ||(newX==x+2) && (newY==y+1 || newY==y-1)
 			 ||(newX==x-2) && (newY==y+1 || newY==y-1))
 			{
+				if(checkBlack(board,Black_King_X,Black_King_Y))
+				{	
+					printf("You'll be checked\n");
+					return 0;
+				}	
 				board[x][y]=EMPTY;
 				board[newX][newY]=HORSEB;
 				return 1;
@@ -346,6 +387,11 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] =EMPTY;
 					board[newX][newY] = QUEENB;
 					return 1;
@@ -360,6 +406,11 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY] = QUEENB;
 					return 1;
@@ -382,6 +433,11 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] =EMPTY;
 					board[newX][newY]=QUEENB;
 					return 1;
@@ -396,6 +452,11 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] =EMPTY;
 					board[newX][newY]=QUEENB;
 					return 1;
@@ -440,6 +501,11 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= QUEENB;
 					return 1;
@@ -454,6 +520,11 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= QUEENB;
 					return 1;
@@ -468,6 +539,11 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= QUEENB;
 					return 1;
@@ -482,6 +558,11 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 							return 0;
 						}
 					}
+					if(checkBlack(board,Black_King_X,Black_King_Y))
+					{	
+						printf("You'll be checked\n");
+						return 0;
+					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= QUEENB;
 					return 1;
@@ -552,14 +633,15 @@ int moveBlackKing(int board[8][8], int x, int y)
 			if((newX==x) && (newY==y+1 || newY==y-1)
 			||(newX==x+1 || newX==x-1) && (newY==y || newY==y+1 || newY==y-1))
 			{
-				/* if(check(board,newX,newY)
-				 {
+				if(checkBlack(board,Black_King_X,Black_King_Y))
+				{	
 					printf("You'll be checked\n");
 					return 0;
-				*/
+				}	
+				Black_King_X = newX;
+				Black_King_Y = newY;
 				board[x][y]=EMPTY;
 				board[newX][newY]=KINGB;
-				trackBlackKing(newX, newY);
 				return 1;
 			}
 			printf("Not a king movement\n");
