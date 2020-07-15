@@ -26,7 +26,7 @@
 
 int Black_King_X = 0;
 int Black_King_Y = 4;
-int White_King_X = 0;
+int White_King_X = 7;
 int White_King_Y = 4;
 
 bool chooseWhiteUnit(int board[8][8]);

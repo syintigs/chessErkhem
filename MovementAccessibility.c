@@ -35,8 +35,6 @@ bool checkKing(int board[8][8], int x, int y, int enemyX, int enemyY);
 
 bool checkWhitePawn(int board[8][8],int x, int y, int enemyX, int enemyY)
 {
-	enemyX--;
-	enemyY--;
 	if(enemyX==x-1 &&
 	(enemyY==y-1||enemyY==y+1))
 	{
@@ -48,8 +46,6 @@ bool checkWhitePawn(int board[8][8],int x, int y, int enemyX, int enemyY)
 
 bool checkBlackPawn(int board[8][8],int x, int y, int enemyX, int enemyY)
 {
-	enemyX--;
-	enemyY--;
 	if(enemyX==x+1 &&
 	(enemyY==y-1||enemyY==y+1))
 	{
@@ -62,8 +58,6 @@ bool checkBlackPawn(int board[8][8],int x, int y, int enemyX, int enemyY)
 
 bool checkRook(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
-	enemyX--;
-	enemyY--;
 	if(enemyY==y)
 	{
 		int xChange = abs(enemyX-x);
@@ -120,8 +114,6 @@ bool checkRook(int board[8][8], int x, int y, int enemyX, int enemyY)
 
 bool checkBishop(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
-	enemyX--;
-	enemyY--;
 	if(abs(enemyX-x)==abs(enemyY-y))
 	{
 		int change = abs(enemyX-x);
@@ -173,8 +165,6 @@ bool checkBishop(int board[8][8], int x, int y, int enemyX, int enemyY)
 /*
 bool checkHorse(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
-	enemyX--;
-	enemyY--;
 	if((enemyX==x+1) && (enemyY==y+2 || enemyY==y-2)
 	 ||(enemyX==x-1) && (enemyY==y+2 || enemyY==y-2)
 	 ||(enemyX==x+2) && (enemyY==y+1 || enemyY==y-1)
@@ -191,8 +181,6 @@ bool checkHorse(int board[8][8], int x, int y, int enemyX, int enemyY)
 
 bool checkQueen(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
-	enemyX--;
-	enemyY--;
 	if(checkRook(board, x, y, enemyX, enemyY) || checkBishop(board,x,y, enemyX, enemyY))
 	{
 		return true;
@@ -202,8 +190,6 @@ bool checkQueen(int board[8][8], int x, int y, int enemyX, int enemyY)
 
 bool checkKing(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
-	enemyX--;
-	enemyY--;
 	if((enemyX==x) && (enemyY==y+1 || enemyY==y-1)
 	||(enemyX==x+1 || enemyX==x-1) && (enemyY==y || enemyY==y+1 || enemyY==y-1))
 	{

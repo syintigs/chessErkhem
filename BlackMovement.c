@@ -70,7 +70,7 @@ bool moveBlackPawn(int board[8][8], int x, int y)
 			{
 				if(checkBlack(board,Black_King_X,Black_King_Y))
 				{	
-					printf("You'll be checked\n");
+					printf("Black King will be checked\n");
 					return false;
 				}	
 				board[x][y]=EMPTY;
