@@ -7,4 +7,4 @@ bool selectionBlackCheck(int board[9][8], int x, int y, int enemyX, int enemyY);
 bool checkBlackLateral(int board[8][8], int x, int y);
 bool checkBlackDiagonal(int board[8][8] , int x, int y);
 bool checkEnemyWhiteHorse(int board[8][8], int x, int y);
-bool checkBlackSurrounding(int board[8][8] , int x, y);
+bool checkBlackSurrounding(int board[8][8] , int x, int y);

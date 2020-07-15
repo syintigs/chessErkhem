@@ -180,7 +180,6 @@ int main(void)
 		{ PAWN,PAWN,PAWN,PAWN,PAWN,PAWN,PAWN,PAWN},
 		{ ROOK, HORSE, BISHOP, QUEEN, KING, BISHOP, HORSE, ROOK}
 	};
-	trackBlackKing(0,4);
 	int cycle = 1;
 	while(1)
 	{
