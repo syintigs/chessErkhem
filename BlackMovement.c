@@ -26,7 +26,17 @@
  *151 Black Queen
  *170 Black King
  */
-int moveBlackPawn(int board[8][8], int x, int y)
+
+bool moveBlackPawn(int board[8][8], int x, int y);
+bool moveBlackRook(int board[8][8], int x, int y);
+bool moveBlackBishop(int board[8][8], int x, int y);
+bool moveBlackHorse(int board[8][8], int x, int y);
+bool moveBlackQueen(int board[8][8], int x, int y);
+bool moveBlackKing(int board[8][8], int x, int y);
+bool moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY);
+bool moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY);
+
+bool moveBlackPawn(int board[8][8], int x, int y)
 {
 	int newX;
        	int newY;
@@ -49,11 +59,11 @@ int moveBlackPawn(int board[8][8], int x, int y)
 				if(checkBlack(board, Black_King_X, Black_King_Y))
 				{	
 					printf("Black King will be checked\n");	
-					return 0;
+					return false;
 				}
 				board[x][y]= EMPTY;
 				board[newX][newY] = PAWNB;
-				return 1;
+				return true;
 			}
 	       	case EMPTY:
 			if(newX==x+1 && newY==y)
@@ -61,18 +71,18 @@ int moveBlackPawn(int board[8][8], int x, int y)
 				if(checkBlack(board,Black_King_X,Black_King_Y))
 				{	
 					printf("You'll be checked\n");
-					return 0;
+					return false;
 				}	
 				board[x][y]=EMPTY;
 				board[newX][newY]=PAWNB;
-				return 1;
+				return true;
 			}
 	}	
 	printf("Choose new coordinate\n");
-	return 0;
+	return false;
 }	
 
-int moveBlackRook(int board[8][8], int x, int y)
+bool moveBlackRook(int board[8][8], int x, int y)
 {
 	int newX; 
 	int newY; 
@@ -85,7 +95,7 @@ int moveBlackRook(int board[8][8], int x, int y)
 	if(newX==x && newY==y)
 	{
 		printf("Input other than where you are\n");
-		return 0;
+		return false;
 	}
 	switch(board[newX][newY])
 	{
@@ -105,17 +115,17 @@ int moveBlackRook(int board[8][8], int x, int y)
 						if(board[newX-i][newY] < EMPTY)  //Anything other than EMPTY
 						{
 							printf("There are things in the way\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] =EMPTY;
 					board[newX][newY] = ROOKB;
-					return 1;
+					return true;
 				}
 				else if(x>newX)
 				{
@@ -124,21 +134,21 @@ int moveBlackRook(int board[8][8], int x, int y)
 						if(board[newX+i][newY] <EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in the way\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY] = ROOKB;
-					return 1;
+					return true;
 				}	
 				else
 				{
-					return 0;
+					return false;
 				}
 			}
 			if(newX==x)
@@ -151,17 +161,17 @@ int moveBlackRook(int board[8][8], int x, int y)
 						if(board[newX][newY-i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in the way\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] =EMPTY;
 					board[newX][newY]=ROOKB;
-					return 1;
+					return true;
 				}
 				else if(y>newY)
 				{
@@ -170,17 +180,17 @@ int moveBlackRook(int board[8][8], int x, int y)
 						if(board[newX][newY+i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in the way\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] =EMPTY;
 					board[newX][newY]=ROOKB;
-					return 1;
+					return true;
 				}
 				else
 				{
@@ -190,16 +200,16 @@ int moveBlackRook(int board[8][8], int x, int y)
 			else
 			{
 				printf("not a rook movement");
-				return 0;
+				return false;
 			}
 			break;
 		default:
 			printf("Not inside board or friendly unit \n");
-			return 0;
+			return false;
 	}
 }
 
-int moveBlackBishop(int board[8][8], int x, int y)
+bool moveBlackBishop(int board[8][8], int x, int y)
 {
 	int newX;
 	int newY;
@@ -212,7 +222,7 @@ int moveBlackBishop(int board[8][8], int x, int y)
 	if(x==newX && y==newY)
 	{
 		printf("Input other than 0\n");
-		return 0;
+		return false;
 	}
 	switch(board[newX][newY])
 	{
@@ -232,17 +242,17 @@ int moveBlackBishop(int board[8][8], int x, int y)
    						if(board[newX-i][newY-i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= BISHOPB;
-					return 1;
+					return true;
 				}
 				else if(newX>x && y>newY)
 				{
@@ -251,17 +261,17 @@ int moveBlackBishop(int board[8][8], int x, int y)
 						if(board[newX-i][newY+i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= BISHOPB;
-					return 1;
+					return true;
 				}
 				else if(x>newX && newY>y)
 				{
@@ -270,17 +280,17 @@ int moveBlackBishop(int board[8][8], int x, int y)
 						if(board[newX+i][newY-i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= BISHOPB;
-					return 1;
+					return true;
 				}
 				else if(x>newX && y>newY)
 				{
@@ -289,17 +299,17 @@ int moveBlackBishop(int board[8][8], int x, int y)
 						if(board[newX+i][newY+i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= BISHOPB;
-					return 1;
+					return true;
 
 				}
 				else
@@ -310,16 +320,16 @@ int moveBlackBishop(int board[8][8], int x, int y)
 			else
 			{
 				printf("Not a bishop movement\n");
-				return 0;
+				return false;
 			}
 			break;
 		default:
 			printf("Not inside board or friendly unit\n");
-			return 0;
+			return false;
  	}
 }
 
-int moveBlackHorse(int board[8][8], int x, int y)
+bool moveBlackHorse(int board[8][8], int x, int y)
 {
 	int newX;
 	int newY;
@@ -332,7 +342,7 @@ int moveBlackHorse(int board[8][8], int x, int y)
 	if(newX==x && newY==y)
 	{
 		printf("Input other than 0\n");
-		return 0;
+		return false;
 	}
 	switch(board[newX][newY])
 	{
@@ -350,21 +360,21 @@ int moveBlackHorse(int board[8][8], int x, int y)
 				if(checkBlack(board,Black_King_X,Black_King_Y))
 				{	
 					printf("You'll be checked\n");
-					return 0;
+					return false;
 				}	
 				board[x][y]=EMPTY;
 				board[newX][newY]=HORSEB;
-				return 1;
+				return true;
 			}
 			printf("Not a valid horse movement\n");
-			return 0;
+			return false;
 		default: 
 			printf("Outside board or friendly unit\n");
-			return 0;
+			return false;
 	}
 }
 
-int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
+bool moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 {
 	switch(board[newX][newY])
 	{
@@ -384,17 +394,17 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 						if(board[newX-i][newY] < EMPTY)  //Anything other than EMPTY
 						{
 							printf("There are things in the way\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] =EMPTY;
 					board[newX][newY] = QUEENB;
-					return 1;
+					return true;
 				}
 				else if(x>newX)
 				{
@@ -403,21 +413,21 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 						if(board[newX+i][newY] <EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in the way\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY] = QUEENB;
-					return 1;
+					return true;
 				}	
 				else
 				{
-					return 0;
+					return false;
 				}
 			}
 			else if(newX==x)
@@ -430,17 +440,17 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 						if(board[newX][newY-i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in the way\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] =EMPTY;
 					board[newX][newY]=QUEENB;
-					return 1;
+					return true;
 				}	
 				else if(y>newY)
 				{
@@ -449,17 +459,17 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 						if(board[newX][newY+i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in the way\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] =EMPTY;
 					board[newX][newY]=QUEENB;
-					return 1;
+					return true;
 				}
 				else 
 				{
@@ -469,16 +479,16 @@ int moveBlackQueenRook(int board[8][8], int x, int y, int newX, int newY)
 			else
 			{
 				printf("not a valid queen movement\n");
-				return 0;
+				return false;
 			}	
 			break;
 		default:
 			printf("Not inside board or friendly unit \n");
-			return 0;
+			return false;
 	}
 }
 
-int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
+bool moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 {
 	switch(board[newX][newY])
 	{
@@ -498,17 +508,17 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
    						if(board[newX-i][newY-i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= QUEENB;
-					return 1;
+					return true;
 				}
 				else if(newX>x && y>newY)
 				{
@@ -517,17 +527,17 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 						if(board[newX-i][newY+i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= QUEENB;
-					return 1;
+					return true;
 				}
 				else if(x>newX && newY>y)
 				{
@@ -536,17 +546,17 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 						if(board[newX+i][newY-i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= QUEENB;
-					return 1;
+					return true;
 				}
 				else if(x>newX && y>newY)
 				{
@@ -555,17 +565,17 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 						if(board[newX+i][newY+i]<EMPTY) //Anything other than EMPTY
 						{
 							printf("There are things in between\n");
-							return 0;
+							return false;
 						}
 					}
 					if(checkBlack(board,Black_King_X,Black_King_Y))
 					{	
 						printf("You'll be checked\n");
-						return 0;
+						return false;
 					}	
 					board[x][y] = EMPTY;
 					board[newX][newY]= QUEENB;
-					return 1;
+					return true;
 				}
 				else
 				{	
@@ -575,15 +585,15 @@ int moveBlackQueenBishop(int board[8][8], int x, int y, int newX, int newY)
 			else
 			{
 				printf("Not a valid queen movement\n");
-				return 0;
+				return false;
 			}
 			break;
 		default:
 			printf("Not inside board or friendly unit\n");
-			return 0;
+			return false;
  	}
 }
-int moveBlackQueen(int board[8][8], int x, int y)
+bool moveBlackQueen(int board[8][8], int x, int y)
 {
 	int newX;
 	int newY;
@@ -596,23 +606,23 @@ int moveBlackQueen(int board[8][8], int x, int y)
 	if(newX==x && newY==y)
 	{
 		printf("You're already here\n");
-		return 0;
+		return false;
 	}
 	if(moveBlackQueenBishop(board,x,y, newX, newY))
 	{
-		return 1;
+		return true;
 	}
 	else if(moveBlackQueenRook(board,x,y, newX, newY))
 	{
-		return 1;
+		return true;
 	}
 	else
 	{
-		return 0;
+		return false;
 	}
 }
 
-int moveBlackKing(int board[8][8], int x, int y)
+bool moveBlackKing(int board[8][8], int x, int y)
 {
 	int newX;
 	int newY;
@@ -636,18 +646,18 @@ int moveBlackKing(int board[8][8], int x, int y)
 				if(checkBlack(board,Black_King_X,Black_King_Y))
 				{	
 					printf("You'll be checked\n");
-					return 0;
+					return false;
 				}	
 				Black_King_X = newX;
 				Black_King_Y = newY;
 				board[x][y]=EMPTY;
 				board[newX][newY]=KINGB;
-				return 1;
+				return true;
 			}
 			printf("Not a king movement\n");
-			return 0;
+			return false;
 		default:
 			printf("Not a enemy or empty space\n");
-			return 0;	
+			return false;	
 	}
 }

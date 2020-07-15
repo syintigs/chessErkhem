@@ -29,7 +29,11 @@ int Black_King_Y = 4;
 int White_King_X = 0;
 int White_King_Y = 4;
 
-int chooseWhiteUnit(int board[8][8])
+bool chooseWhiteUnit(int board[8][8]);
+bool chooseBlackUnit(int board[8][8]);
+void printBoard(int board[8][8]);
+
+bool chooseWhiteUnit(int board[8][8])
 {
 	int x;
 	int y;
@@ -66,10 +70,10 @@ int chooseWhiteUnit(int board[8][8])
 	else
 	{
 		printf("Choose your own unit\n");
-		return 0;
+		return false;
 	}
 }
-int chooseBlackUnit(int board[8][8])
+bool chooseBlackUnit(int board[8][8])
 {
 	int x;
 	int y;
@@ -106,7 +110,7 @@ int chooseBlackUnit(int board[8][8])
 	else
 	{
 		printf("Choose your own unit\n");
-		return 0;
+		return false;
 	}
 }
 void printBoard(int board[8][8])
@@ -198,5 +202,5 @@ int main(void)
 			}
 		}	
 	}
-	return 0;
+	return false;
 }	
