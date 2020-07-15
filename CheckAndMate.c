@@ -26,8 +26,11 @@ bool checkBlackSurrounding(int board[8][8] , int x, int y);
 
 bool checkBlackLateral(int board[8][8], int x, int y)
 {
+       printf("Check Black Lateral\n");
        for(int enemyX = 0; enemyX<8 ; enemyX++)
        {
+	       printf("enemyX\n");
+	       	printf("%d,%d\n",enemyX,y);
 		if(enemyX==x) continue;
 		if(board[enemyX][y] == ROOK)
 		{
@@ -40,7 +43,8 @@ bool checkBlackLateral(int board[8][8], int x, int y)
        }
        for(int enemyY = 0; enemyY<8; enemyY++)
        {
-		if(enemyY=y) continue;
+	       if(enemyY!=5) printf("%d,%d\n",x,enemyY);
+		if(enemyY==y) continue;
 		if(board[x][enemyY]==ROOK)
 		{
 			if(checkRook(board ,x ,y ,x, enemyY)) return true;
@@ -55,6 +59,7 @@ bool checkBlackLateral(int board[8][8], int x, int y)
 
 bool checkBlackDiagonal(int board[8][8] , int x, int y)
 {
+	printf("Check Black Diagonal\n");
 	int change;
 	for(change = 1; (x-change)>=0 && (y+change)<8 ; change++)//Negative X, Positive Y. Top Right
 	{
@@ -103,6 +108,7 @@ bool checkBlackDiagonal(int board[8][8] , int x, int y)
 }
 bool checkEnemyWhiteHorse(int board[8][8], int x, int y)
 {
+	printf("Check enemy white horse\n");
 	if(board[x+1][y+2] ==HORSE) return true;
 	else if(board[x+1][y-2] ==HORSE) return true;
 	else if(board[x-1][y+2] ==HORSE) return true;
@@ -116,6 +122,7 @@ bool checkEnemyWhiteHorse(int board[8][8], int x, int y)
 
 bool checkBlackSurrounding(int board[8][8] , int x, int y) // Checks the 8 spaces around the king
 {
+	printf("Check black surrounding\n");
 	if ((board[x+1][y+1]==KING) 
 	|| (board[x+1][y]==KING) 
   	|| (board[x+1][y-1]==KING) 
@@ -127,6 +134,7 @@ bool checkBlackSurrounding(int board[8][8] , int x, int y) // Checks the 8 space
 }
 bool checkBlack(int board[8][8], int x, int y)
 {
+	printf("Check black\n");
 	if(checkBlackLateral(board, x, y) // Enemy White Rook and Queen
 	|| checkBlackDiagonal(board, x , y) // Enemy White Bishop and Queen
 	|| checkEnemyWhiteHorse(board, x, y) //Enemy White Horse

@@ -58,6 +58,7 @@ bool checkBlackPawn(int board[8][8],int x, int y, int enemyX, int enemyY)
 
 bool checkRook(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
+	printf("check rook %d,%d \n",enemyX,enemyY);
 	if(enemyY==y)
 	{
 		int xChange = abs(enemyX-x);
@@ -181,6 +182,7 @@ bool checkHorse(int board[8][8], int x, int y, int enemyX, int enemyY)
 
 bool checkQueen(int board[8][8], int x, int y, int enemyX, int enemyY)
 {
+	printf("Check queen %d,%d\n",enemyX,enemyY);
 	if(checkRook(board, x, y, enemyX, enemyY) || checkBishop(board,x,y, enemyX, enemyY))
 	{
 		return true;
