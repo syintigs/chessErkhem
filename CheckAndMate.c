@@ -63,6 +63,7 @@ bool checkBlackDiagonal(int board[8][8] , int x, int y)
 	int change;
 	for(change = 1; (x-change)>=0 && (y+change)<8 ; change++)//Negative X, Positive Y. Top Right
 	{
+		printf("Neg X , Pos Y %d,%d \n", x-change, y+change);
 		if(board[x-change][y+change]==BISHOP)
 		{
 			if(checkBishop(board, x, y, x-change, y+change)) return true;
@@ -74,6 +75,7 @@ bool checkBlackDiagonal(int board[8][8] , int x, int y)
 	}
 	for(change = 1; (x-change)>=0 && (y-change)>=0; change--)//Negative X, Negative Y. Top Left
 	{
+		printf("Neg X, Neg Y %d,%d\n", x-change, y-change);
 		if(board[x-change][y-change]==BISHOP)
 		{
 			if(checkBishop(board, x, y, x-change, y-change)) return true;
@@ -85,6 +87,7 @@ bool checkBlackDiagonal(int board[8][8] , int x, int y)
 	}
 	for(change = 1 ; (x+change)>8 && (y+change)>8; change++)//Positive X, Positive Y. Bottom Right
 	{
+		printf("Pos X, Pos Y %d,%d\n", x+change, y+change);
 		if(board[x+change][y+change]==BISHOP)
 		{
 			if(checkBishop(board, x, y, x+change, y+change)) return true;
@@ -96,6 +99,7 @@ bool checkBlackDiagonal(int board[8][8] , int x, int y)
 	}
 	for(change = 1; (x+change)>8 && (y-change) <=0 ; change++) //Positive X, Negative Y. Bottom Left
 	{
+		printf("Pos X, Neg Y %d,%d\n", x+change, y-change);
 		if(board[x+change][y-change] == BISHOP)
 		{
 			if(checkBishop(board, x, y, x+change, y-change)) return true;
@@ -105,6 +109,7 @@ bool checkBlackDiagonal(int board[8][8] , int x, int y)
 			if(checkBishop(board, x, y, x+change, y-change)) return true;
 		}
 	}
+	return false;
 }
 bool checkEnemyWhiteHorse(int board[8][8], int x, int y)
 {
@@ -131,6 +136,7 @@ bool checkBlackSurrounding(int board[8][8] , int x, int y) // Checks the 8 space
 	|| (board[x-1][y+1]==KING)
 	|| (board[x-1][y]==KING) 
 	|| (board[x-1][y-1]==KING)) return true;
+	return false;
 }
 bool checkBlack(int board[8][8], int x, int y)
 {
@@ -143,7 +149,7 @@ bool checkBlack(int board[8][8], int x, int y)
 		printf("Black will be checked if he makes that move\n");
  		return true;
 	}
-	
+	return false;
 }
 
 bool checkMateBlack(int board[8][8], int x, int y)
