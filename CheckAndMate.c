@@ -31,11 +31,11 @@ bool checkBlackLateral(int board[8][8], int x, int y)
 		if(enemyX==x) continue;
 		if(board[enemyX][y] == ROOK)
 		{
-			if(checkRook(board,x, y, enemyX, y) return true;
+			if(checkRook(board,x, y, enemyX, y)) return true;
 		}	
 		else if(board[enemyX][y] == QUEEN)
 		{
-			if(checkQueen(board, x, y, enemyX, y) return true;
+			if(checkQueen(board, x, y, enemyX, y)) return true;
 		}	
        }
        for(int enemyY = 0; enemyY<8; enemyY++)
@@ -43,14 +43,14 @@ bool checkBlackLateral(int board[8][8], int x, int y)
 		if(enemyY=y) continue;
 		if(board[x][enemyY]==ROOK)
 		{
-			if(checkRook(board ,x ,y ,x, enemyY) return true;
+			if(checkRook(board ,x ,y ,x, enemyY)) return true;
 		}
 		else if(board[x][enemyY] ==QUEEN)
 		{
-			if(checkQueen(board, x, y, x, enemyY) return true;
+			if(checkQueen(board, x, y, x, enemyY)) return true;
 		}
        }
-       reutrn false;
+       return false;
 }
 
 bool checkBlackDiagonal(int board[8][8] , int x, int y)
@@ -60,22 +60,22 @@ bool checkBlackDiagonal(int board[8][8] , int x, int y)
 	{
 		if(board[x-change][y+change]==BISHOP)
 		{
-			if(checkBishop(board, x, y, x-change, y+change) return true;
+			if(checkBishop(board, x, y, x-change, y+change)) return true;
 		}
 		else if(board[x-change][y+change]==QUEEN)
 		{
-			if(checkQueen(board,x,y,x-change, y+change) return true;
+			if(checkQueen(board,x,y,x-change, y+change)) return true;
 		}
 	}
 	for(change = 1; (x-change)>=0 && (y-change)>=0; change--)//Negative X, Negative Y. Top Left
 	{
 		if(board[x-change][y-change]==BISHOP)
 		{
-			if(checkBishop(board, x, y, x-change, y-change) return true;
+			if(checkBishop(board, x, y, x-change, y-change)) return true;
 		}
 		else if(board[x-change][y-change]==QUEEN)
 		{
-			if(checkQueen(board, x, y, x-change, y-change)return true;
+			if(checkQueen(board, x, y, x-change, y-change))return true;
 		}
 	}
 	for(change = 1 ; (x+change)>8 && (y+change)>8; change++)//Positive X, Positive Y. Bottom Right
@@ -111,10 +111,10 @@ bool checkEnemyWhiteHorse(int board[8][8], int x, int y)
 	else if(board[x+2][y-1] ==HORSE) return true;
 	else if(board[x-2][y+1] ==HORSE) return true;
 	else if(board[x-2][y-1] ==HORSE) return true;
-	else reutrn false;
+	else return false;
 }
 
-bool checkBlackSurrounding(int board[8][8] , int x, y) // Checks the 8 spaces around the king
+bool checkBlackSurrounding(int board[8][8] , int x, int y) // Checks the 8 spaces around the king
 {
 	if ((board[x+1][y+1]==KING) 
 	|| (board[x+1][y]==KING) 
@@ -141,7 +141,7 @@ bool checkBlack(int board[8][8], int x, int y)
 bool checkMateBlack(int board[8][8], int x, int y)
 {
 	if((checkBlack(board,x,y))
-	||((checkBlack(board,x+1,y) || (board[x+1][y]!=EMPTY && board[x+1][y]<0))
+	||(checkBlack(board,x+1,y) || (board[x+1][y]!=EMPTY && board[x+1][y]<0))
 	||(checkBlack(board,x-1,y) || (board[x-1][y]!=EMPTY && board[x-1][y]<0))
 	||(checkBlack(board,x+1,y+1) || (board[x+1][y+1]!=EMPTY && board[x+1][y+1]<0))
 	||(checkBlack(board,x-1,y+1) || (board[x-1][y+1]!=EMPTY && board[x-1][y+1]<0))
@@ -153,8 +153,9 @@ bool checkMateBlack(int board[8][8], int x, int y)
 		printf("Black is checkmated\n");
 		return true;
 	}
-	reutrn false;	
+	return false;	
 }
+/*
 bool checkMateWhite(int board[8][8], int x, int y)
 {
 	if((checkWhite(board,x,y,x+1,y) || (board[x+1][y]<EMPTY && board[x+1][y]>))
@@ -168,7 +169,8 @@ bool checkMateWhite(int board[8][8], int x, int y)
 	{
 		return true;
 	}
-	reutrn false;
+	return false;
 }
+*/
 
 
